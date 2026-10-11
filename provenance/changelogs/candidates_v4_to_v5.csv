@@ -1,0 +1,12 @@
+row_key,column,old_value,new_value
+117,positive,False,True
+117,date,,2021-01-01
+176,positive,False,True
+176,date,,1998-05-01
+270,positive,False,True
+270,date,,2018-01-01
+673,positive,False,True
+673,date,,2021-02-01
+1288;1293,logcd,15.033999999999999,15.034
+1419;1420;1421,dist,3.6199999999999997,3.62
+378,(row),(present),(absent)

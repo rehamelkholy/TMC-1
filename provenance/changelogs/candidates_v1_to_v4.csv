@@ -1,0 +1,7 @@
+row_key,column,old_value,new_value
+382,positive,False,True
+382,date,,2021-01-01
+602,positive,False,True
+602,date,,2025-06-15
+792,positive,False,True
+792,date,,2023-08-03

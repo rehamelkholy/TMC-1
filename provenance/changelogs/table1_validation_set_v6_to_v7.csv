@@ -1,0 +1,9 @@
+row_key,column,old_value,new_value
+(Z)-NCCHCHCN,(row),(absent),(present)
+HCCCHCN,(row),(absent),(present)
+cyanocoronene,(row),(absent),(present)
+phenalene,(row),(absent),(present)
+NC-CHCH-CN(Z),(row),(present),(absent)
+1-cyano propargyl radical (HCCCHCN),(row),(present),(absent)
+cyanocoronene (C24H11CN),(row),(present),(absent)
+phenalene (c-C13H10),(row),(present),(absent)

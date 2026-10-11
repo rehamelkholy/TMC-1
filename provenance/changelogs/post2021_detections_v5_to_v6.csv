@@ -1,0 +1,11 @@
+row_key,column,old_value,new_value
+NO,(row),(absent),(present)
+NS,(row),(absent),(present)
+CH2N+,(row),(absent),(present)
+H2S,(row),(absent),(present)
+CHO+,(row),(absent),(present)
+C2H,(row),(absent),(present)
+C2HNO,(row),(absent),(present)
+CHNS,(row),(absent),(present)
+CO,(row),(absent),(present)
+CHO,(row),(absent),(present)

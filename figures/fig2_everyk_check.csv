@@ -1,0 +1,6 @@
+method,k_range,max_abs_diff_vs_independent_exact,match
+combined,1..200,0.0,True
+high_logcd,1..200,0.0,True
+detectability,1..200,0.0,True
+low_dist,1..200,0.0,True
+random,1..200,8.881784197001252e-16,True

@@ -1,0 +1,8 @@
+row_key,column,old_value,new_value
+1-cyanopyrene,cd_source,"Wenzel et al. 2024, Nature Astronomy (arXiv:2410.00670)","Wenzel et al. 2024, Nature Astronomy (arXiv:2410.00657)"
+1-cyanopyrene,arxiv_id,2410.0067,2410.00657
+1-cyanopyrene,flags,2:1:2 abundance ratio reported across the 3 cyanopyrene isomers in one paper,"F9 CORRECTION: arxiv_id was 2410.0067 (float-truncated 2410.00670), itself the WRONG paper -- 2410.00670 is the separate 2-/4-cyanopyrene paper. Correct id for THIS species (1-cyanopyrene) is 2410.00657, confirmed via F8 Step 2 primary-source read."
+CH3NC,(row),(absent),(present)
+C6H5CCH,(row),(absent),(present)
+HS2,(row),(absent),(present)
+CH3CO+,(row),(absent),(present)

@@ -1,0 +1,7 @@
+row_key,column,old_value,new_value
+NO,Ref,1993A&A...268..212G (ADS bibcode; no DOI located),1993A&A...268..212G
+HCNH+,Ref,1991A&A...247..487S (ADS bibcode; no DOI located),1991A&A...247..487S
+HCO+,Note,"Reported before Lee et al. (2021) was published; Earliest TMC-1 report located; supersedes an initially considered reference (Langer et al. 1978, ApJ 225 L139) that on verification reports only H13CO+/HC18O+ toward TMC-1, not the main HCO+ line",Reported before Lee et al. (2021) was published; Earliest TMC-1 report located
+CCH,Date,1980,1980-08-01
+CO,Note,"Reported before Lee et al. (2021) was published; Earliest TMC-1 report located; supersedes an initially considered reference (Penzias et al. 1972, ApJ 174 L43) that on verification reports CO toward the Orion Nebula, not TMC-1",Reported before Lee et al. (2021) was published; Earliest TMC-1 report located
+HCO,Note,"Reported before Lee et al. (2021) was published; Earliest TMC-1 report located; surfaced during item 5's top-100-entrant audit (candidate_id 493), not the original item 2/3 pass -- a genuine omission from this task's own item-1 TMC-1 inventory. The general-ISM first detection of the HCO formula (Snyder, Hollis & Ulich 1976, ApJ 208, L91) is toward W3/W51/NGC2024C/K3-50, not TMC-1",Reported before Lee et al. (2021) was published; Earliest TMC-1 report located

@@ -1,0 +1,16 @@
+row_key,column,old_value,new_value
+382,matched_detection_formula,,CH3CO+
+382,match_level,,A
+382,first_public_date_of_match,,2021-01
+382,in_list_by_v3_1,False,True
+487,first_public_date_of_match,"2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)",2022-01
+489,first_public_date_of_match,"2023 (year only, from citation label; exact date not located, no journal dates or arXiv id found)",2023-07
+602,matched_detection_formula,,HS2
+602,match_level,,A
+602,first_public_date_of_match,,2025-06-15
+602,in_list_by_v3_1,False,True
+684,first_public_date_of_match,"2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)",2022-01
+792,matched_detection_formula,,CH3NC
+792,match_level,,A
+792,first_public_date_of_match,,2023-08-03
+792,in_list_by_v3_1,False,True

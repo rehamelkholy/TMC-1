@@ -1,0 +1,13 @@
+row_key,column,old_value,new_value
+328,positive,False,True
+328,date,,2025-01-09
+517,positive,False,True
+517,date,,2021-03-23
+533,positive,False,True
+533,date,,2024-01-22
+543,positive,False,True
+543,date,,2010-12-01
+1365,positive,False,True
+1365,date,,2000-01-18
+1372,positive,False,True
+1372,date,,2022-07-19

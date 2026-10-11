@@ -1,0 +1,19 @@
+row_key,column,old_value,new_value
+C5H+,first_public_date,"2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)",2022-01
+C5H+,first_public_date_basis,journal_online,arxiv_id_month_only (amendments_2 A7)
+C5H+,arxiv_v1_date,,2022-01
+C5H+,arxiv_id,,2201.02434
+C5H+,date_confidence,unresolved,medium
+C5H+,flags,resolved in a prior session (SC item 26); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for C5H+/C3H+ is UNCERTAIN (could be either half of 2022),"resolved in a prior session (SC item 26); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for C5H+/C3H+ is UNCERTAIN (could be either half of 2022) [F3c A7: date/arXiv id superseded per protocol_v1_amendments_2.md -- was '2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)' (unresolved, no arXiv id), now arXiv:2201.02434 (2022-01).]"
+C3H+,first_public_date,"2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)",2022-01
+C3H+,first_public_date_basis,journal_online,arxiv_id_month_only (amendments_2 A7)
+C3H+,arxiv_v1_date,,2022-01
+C3H+,arxiv_id,,2201.02434
+C3H+,date_confidence,unresolved,medium
+C3H+,flags,resolved in a prior session (SC item 26); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for C5H+/C3H+ is UNCERTAIN (could be either half of 2022),"resolved in a prior session (SC item 26); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for C5H+/C3H+ is UNCERTAIN (could be either half of 2022) [F3c A7: date/arXiv id superseded per protocol_v1_amendments_2.md -- was '2022 (year only, from citation label '2022a'; exact date not located, no journal dates or arXiv id found)' (unresolved, no arXiv id), now arXiv:2201.02434 (2022-01).]"
+H2CCCH+,first_public_date,"2023 (year only, from citation label; exact date not located, no journal dates or arXiv id found)",2023-07
+H2CCCH+,first_public_date_basis,journal_online,arxiv_id_month_only (amendments_2 A7)
+H2CCCH+,arxiv_v1_date,,2023-07
+H2CCCH+,arxiv_id,,2307.01733
+H2CCCH+,date_confidence,unresolved,medium
+H2CCCH+,flags,resolved in a prior session (SC item 27); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for H2CCCH+ is UNCERTAIN (could be either half of 2023),"resolved in a prior session (SC item 27); arXiv id not captured there and not independently re-searched this session; no exact date located at all -- half-year bucket for H2CCCH+ is UNCERTAIN (could be either half of 2023) [F3c A7: date/arXiv id superseded per protocol_v1_amendments_2.md -- was '2023 (year only, from citation label; exact date not located, no journal dates or arXiv id found)' (unresolved, no arXiv id), now arXiv:2307.01733 (2023-07).]"

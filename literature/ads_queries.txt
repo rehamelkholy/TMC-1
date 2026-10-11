@@ -1,0 +1,3 @@
+abs:("TMC-1" OR "TMC1" OR "Taurus Molecular Cloud 1") pubdate:[2021-08 TO 2026-09] collection:astronomy
+
+author:("Cernicharo, J" OR "McGuire, B" OR "Agundez, M") pubdate:[2021-08 TO 2026-09] collection:astronomy

@@ -1,0 +1,1221 @@
+{
+  "task": "F7",
+  "generated": "2026-09-24 12:57:07",
+  "elapsed_seconds": 60.4,
+  "protocol_files": {
+    "protocol_v1.md": "13aa3cdd6002f7bdba97efe0c4a0417ce433d2ead917e63867e0638b5ed41c7f",
+    "protocol_v1_amendments.md": "cb7005a7a8de9b356cad1c20a39cbe081ce9822944ed019c6f99b82a0d1e9d84",
+    "protocol_v1_amendments_2.md": "1518a6275e367b191b52f0dd4e07433b943ba1180200c3270746fff4b3eca908",
+    "protocol_v1_amendments_3.md": "6fe3d5781d6824977fb3f7c141abd710a905e49b49ba43ae2d7c40cedecaaec1",
+    "protocol_v1_amendments_4.md": "53588c76425df425d9a2160000b64c2bf95223c079fd11ceccb439c7618374ba",
+    "protocol_v1_amendments_5.md": "4d26a4338c106ebbbe818bf89f57c145e9082b82633cd5978cc683935e303dc9",
+    "protocol_v1_amendments_6.md": "b3f2b0334490f6345981c52929dbfa2af554e3b657862466c2c3f44c056bc439"
+  },
+  "run_config": {
+    "base_seed": 20260921,
+    "n_tiebreak_trials": 200,
+    "n_bootstrap": 2000,
+    "bootstrap_seed": 20260921,
+    "topk_list": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "origins": [
+      "2022-01-01",
+      "2023-01-01",
+      "2024-01-01",
+      "2025-01-01"
+    ]
+  },
+  "implementation_notes": [
+    "F7 = the Amendment 5 recomputed-feature sensitivity (K1: temporal evaluation only, V1/V2/per-origin metrics; V3 NOT re-run -- its features stay the 2021 released state). K2: same purged 1,489-entry universe / J1 key / 1,440 candidates / 40 positives / origins / seeds / logistic model / baselines / bootstrap as F6.",
+    "K3 (known chemistry at origin o) = the 87 authoritative anchors + every post2021_detections_v3_2.csv row with parse_one_date(first_public_date) < o (I2 month->1st-of-month convention) -- this single file already carries both genuinely-post-2021 detections and the pre-2021-08 species known under A3 but absent from Table A2 (e.g. C3N-, C5N-, both dated 2020-09-07 in it).",
+    "Amendment 6, L1: anchors embedded from table_a2_authoritative_v2.csv's embedding_smiles column (table_a2_lee2021.TABLE_A2's SMILES, independently validated to reproduce Lee's published Table A2 embeddings to floating-point precision) rather than table_a2_authoritative.csv's own canonical SMILES -- recorded after gate G1 first failed (max dist diff 7.99) under the latter. The two tables map one-to-one by InChIKey (verified, 87/87, zero mismatches) and table_a2_authoritative.csv remains the identity/citation reference.",
+    "Amendment 6, L2: a post2021 detection matched (rules A/B/C, via the purged raw file's own matched_detection_formula/match_level columns from the F3 validation freeze) to >=1 Lee-list raw entries is embedded from ALL matched entries' SMILES for distance-anchor purposes, and from the single lowest-Lee-id matched entry's SMILES for its GPR training point; an unmatched detection is embedded from its own post2021_detections_v3_2.csv SMILES for both purposes. 41/77 detections matched, 36/77 unmatched (verified: 0 of the 77 detections coincide with an anchor by InChIKey).",
+    "K4 GPR training set at origin o = the 643 shipped load_precutoff_training_set() points (raw-PCA-70, already inverse-transformed by that function itself, unmodified) + 9 synthetic points per known non-anchor K3 species WITH a recorded column density (embedding repeated 9x, y = log10 N + Gaussian noise sigma=0.5, one RNG per origin seeded 20260921+origin_index [0-based, in K2's origin order], drawn in a fixed formula-sorted order for reproducibility). Species known but without a recorded column density are distance anchors only, never GPR training points -- see distance_only_species_by_origin.json (only HC3N+, at the 2025-01-01 origin, in this run).",
+    "K5: dist = Euclidean distance in raw PCA-70 to the nearest K3(o) member (every anchor + every detection distance-anchor point). logcd/sigma = that origin's GPR posterior mean/std. mu/mw/charged/radical stay as released (F6's own candidate values, unchanged, not origin-varying). Recomputed per raw (pre-J1) entry, then J1-collapsed (numeric features averaged over members) using the SAME candidate_id/species_key/member_ids/positive/date grouping as F6's own candidates_purged_v1.csv (build_candidates_purged(), imported unmodified) -- guarantees F7's candidate identities match F6's exactly.",
+    "K6 gates (re-run with L1 applied, see protocol_v1_amendments_6.md and gate_report_v2.json): G1 (kernel/LML/feature-match to 1e-6, K3 restricted to the 87 anchors) PASSED -- LML -632.152288 (reference -632.1523), max abs feature diffs mean=7.7e-12, sigma=1.7e-14, dist=1.8e-15, all far inside 1e-6. G2 (Spearman rho >= 0.95 for sigma and dist vs Lee's released values) PASSED -- rho_sigma=0.9793, rho_dist=0.9765.",
+    "step4_engine.py's run_origin_evaluation(cand, Xs, sensitivity) evaluates all 4 ORIGINS against ONE fixed feature snapshot; F7's features are origin-varying, so it was called once per origin (with that origin's own recomputed cand/Xs) and only the matching origin's own result kept from each call -- see step3_seal_results_f7.py docstring. All evaluation logic itself (step4_engine.py, step5_bootstrap.py, j2_shift.py) is imported completely unmodified from f4a_implementation/ and f4c_implementation/.",
+    "No pass/fail verdicts are computed in this file -- point estimates, pooled sums and bootstrap intervals only, matching F4a/F4c/F6's convention. V3 feedback learner is absent per K1 (not a sensitivity target)."
+  ],
+  "gate_report": {
+    "amendment": "6 (L1 applied: anchors embedded from table_a2_authoritative_v2.csv's embedding_smiles)",
+    "lml": -632.152288287601,
+    "lml_reference": -632.1523,
+    "lml_match": true,
+    "kernel_": "RationalQuadratic(alpha=8.94e+03, length_scale=1.97) + DotProduct(sigma_0=5.28) + WhiteKernel(noise_level=0.262)",
+    "training_set_size": 643,
+    "max_abs_diff_mean": 7.73070496506989e-12,
+    "max_abs_diff_sigma": 1.6653345369377348e-14,
+    "max_abs_diff_dist": 1.7763568394002505e-15,
+    "features_match_1e6": true,
+    "G1": true,
+    "spearman_rho_sigma": 0.9793226072435649,
+    "spearman_rho_dist": 0.9765104644093536,
+    "G2": true,
+    "gates_passed": true
+  },
+  "distance_only_species_by_origin": {
+    "2022-01-01": [],
+    "2023-01-01": [],
+    "2024-01-01": [],
+    "2025-01-01": [
+      "HC3N+"
+    ]
+  },
+  "primary": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.6672163329407146,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5930113859442481,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7045151158225363,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6709069493521791,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.26493914409108754,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.46917942677659996,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4835268943855516,
+            "topk": {
+              "25": 0.175,
+              "50": 0.3,
+              "100": 0.565,
+              "200": 1.16
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.8093617021276596,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3483687943262411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5009929078014185,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7078014184397163,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24085106382978722,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.19234042553191485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4830382978723404,
+            "topk": {
+              "25": 0.075,
+              "50": 0.145,
+              "100": 0.33,
+              "200": 0.63
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.7639087018544937,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.551444365192582,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.606722539229672,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6659236804564908,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.19133380884450785,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.36287446504992865,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.48729716476462204,
+            "topk": {
+              "25": 0.15,
+              "50": 0.29,
+              "100": 0.575,
+              "200": 1.08
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 2,
+        "methods": {
+          "combined": {
+            "auc": 0.8832142857142857,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.48750000000000004,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5892857142857143,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8017857142857143,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.1925,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.29821428571428577,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.49638750000000004,
+            "topk": {
+              "25": 0.045,
+              "50": 0.08,
+              "100": 0.145,
+              "200": 0.325
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.747060570557052,
+        "topk": {
+          "25": 1.0,
+          "50": 2.0,
+          "100": 4.0,
+          "200": 9.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5193958902779205,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 2.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6199146801591134,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6878387711913145,
+        "topk": {
+          "25": 0.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 5.0
+        }
+      },
+      "random": {
+        "auc": 0.4857535773728601,
+        "topk": {
+          "25": 0.445,
+          "50": 0.8149999999999998,
+          "100": 1.615,
+          "200": 3.1950000000000003
+        }
+      },
+      "high_sigma": {
+        "auc": 0.2293490869468661,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.36182255251987394,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist",
+    "bootstrap_combined_vs_best_baseline": {
+      "n_boot": 2000,
+      "seed": 20260921,
+      "auc_diff_ci95": [
+        0.012543327017634793,
+        0.10353098188141076
+      ],
+      "top100_diff_ci95": [
+        0.0,
+        5.0
+      ],
+      "auc_diff_mean": 0.05904218048963154,
+      "top100_diff_mean": 1.9455
+    }
+  },
+  "sensitivity_A4a_non_arxiv_dates_dropped": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.6672163329407146,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5930113859442481,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7045151158225363,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6709069493521791,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.26493914409108754,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.46917942677659996,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4945461327051433,
+            "topk": {
+              "25": 0.12,
+              "50": 0.275,
+              "100": 0.615,
+              "200": 1.135
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.8093617021276596,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3483687943262411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5009929078014185,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7078014184397163,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24085106382978722,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.19234042553191485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5134418439716312,
+            "topk": {
+              "25": 0.12,
+              "50": 0.195,
+              "100": 0.365,
+              "200": 0.755
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.7639087018544937,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.551444365192582,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.606722539229672,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6659236804564908,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.19133380884450785,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.36287446504992865,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5037905670470756,
+            "topk": {
+              "25": 0.16,
+              "50": 0.35,
+              "100": 0.655,
+              "200": 1.17
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.8993576017130621,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5974304068522485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.662384011420414,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8351177730192719,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.1541755888650964,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.37473233404710926,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4912562455389008,
+            "topk": {
+              "25": 0.015,
+              "50": 0.04,
+              "100": 0.13,
+              "200": 0.195
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.74184272711538,
+        "topk": {
+          "25": 1.0,
+          "50": 2.0,
+          "100": 4.0,
+          "200": 8.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5255622510227106,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 2.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6244245611594657,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.684333776219104,
+        "topk": {
+          "25": 0.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 5.0
+        }
+      },
+      "random": {
+        "auc": 0.5017263128747805,
+        "topk": {
+          "25": 0.41500000000000004,
+          "50": 0.8600000000000001,
+          "100": 1.7650000000000001,
+          "200": 3.255
+        }
+      },
+      "high_sigma": {
+        "auc": 0.22928494241695144,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.36791500100415275,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist"
+  },
+  "sensitivity_A4b_60day_boundary_flip": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 19,
+        "test_pool_size": 1421,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.5981068648266101,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5638711960368011,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.6927636234961075,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.5295470629865534,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.3174982307147912,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.4752300070771408,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5019537331917905,
+            "topk": {
+              "25": 0.135,
+              "50": 0.25,
+              "100": 0.5,
+              "200": 1.095
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 27,
+        "test_pool_size": 1413,
+        "test_positives": 4,
+        "methods": {
+          "combined": {
+            "auc": 0.9027679205110007,
+            "topk": {
+              "25": 2.0,
+              "50": 2.0,
+              "100": 3.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.39229950319375445,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.518097941802697,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8970901348474095,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 2.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.17565649396735272,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.23757984386089426,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4941705110007097,
+            "topk": {
+              "25": 0.085,
+              "50": 0.14,
+              "100": 0.275,
+              "200": 0.615
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 31,
+        "test_pool_size": 1409,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.7644539614561028,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5663811563169165,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.6071556031406139,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6641684511063526,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.18335117773019272,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.37437544610992146,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.49865676302640966,
+            "topk": {
+              "25": 0.105,
+              "50": 0.24,
+              "100": 0.485,
+              "200": 1.09
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 39,
+        "test_pool_size": 1401,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.8792857142857142,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3778571428571429,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5164285714285715,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7685714285714286,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.23071428571428576,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.2221428571428572,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4817678571428572,
+            "topk": {
+              "25": 0.015,
+              "50": 0.045,
+              "100": 0.095,
+              "200": 0.175
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.7328973336472104,
+        "topk": {
+          "25": 2.0,
+          "50": 2.0,
+          "100": 6.0,
+          "200": 9.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5232892368791382,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 1.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6184844834158634,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 4.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6622217181287768,
+        "topk": {
+          "25": 1.0,
+          "50": 3.0,
+          "100": 3.0,
+          "200": 4.0
+        }
+      },
+      "random": {
+        "auc": 0.49825399385196656,
+        "topk": {
+          "25": 0.34,
+          "50": 0.675,
+          "100": 1.355,
+          "200": 2.9749999999999996
+        }
+      },
+      "high_sigma": {
+        "auc": 0.2352445490068366,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.3794907551468063,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist",
+    "j2_shift_log": [
+      {
+        "candidate_id": 29,
+        "formulas": "C7H2N+",
+        "orig_date": "2022-03-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 184,
+        "formulas": "C4HN2+",
+        "orig_date": "2022-12-13",
+        "origin": "2023-01-01",
+        "new_date": "2023-01-02"
+      },
+      {
+        "candidate_id": 386,
+        "formulas": "CHNS",
+        "orig_date": "2024-01-01",
+        "origin": "2024-01-01",
+        "new_date": "2023-12-31"
+      },
+      {
+        "candidate_id": 468,
+        "formulas": "C3H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 558,
+        "formulas": "C2H4S",
+        "orig_date": "2025-01-01",
+        "origin": "2025-01-01",
+        "new_date": "2024-12-31"
+      },
+      {
+        "candidate_id": 660,
+        "formulas": "C5H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 688,
+        "formulas": "C3H4O",
+        "orig_date": "2023-02-17",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 707,
+        "formulas": "C5H5N",
+        "orig_date": "2023-03-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 823,
+        "formulas": "C10H-",
+        "orig_date": "2023-01-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      }
+    ]
+  }
+}

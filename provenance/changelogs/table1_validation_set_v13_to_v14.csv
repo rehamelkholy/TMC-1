@@ -1,0 +1,14 @@
+row_key,column,old_value,new_value
+OH,LeeID,,1365
+OH,Rule,,A
+OH,Ref,2000A&A...353.1065H (ADS bibcode; no DOI located),2000A&A...353.1065H
+HSCN,LeeID,,543
+HSCN,Rule,,A
+HCS,LeeID,,517
+HCS,Rule,,A
+C7H,LeeID,,1372
+C7H,Rule,,A
+NCO,LeeID,,533
+NCO,Rule,,A
+CH3SH,LeeID,,328
+CH3SH,Rule,,A

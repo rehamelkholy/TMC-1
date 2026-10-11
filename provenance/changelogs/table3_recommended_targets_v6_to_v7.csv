@@ -1,0 +1,232 @@
+row_key,column,old_value,new_value
+,(column),(absent),Note
+185,Elsewhere,not detected elsewhere found,-
+689,Species,"C3HN (nitrile-ylide form; does not match HC3N, HCCNC, or HNC3)",HCNCC
+689,Elsewhere,not detected elsewhere found,-
+871,Elsewhere,not detected elsewhere found,-
+871,LabSpec,unable to verify,CDMS 109501
+273,Species,HSiN (H on Si; not the literature imino form usually called HNSi),HSiN
+273,Elsewhere,not detected elsewhere found,-
+273,LabSpec,unable to verify,none
+202,Elsewhere,not detected elsewhere found (neither isomer of C7H2 has been),-
+202,LabSpec,unable to verify,CDMS 086501
+371,Species,C3H3- (1-propynyl/propargyl anion),CH3CC-
+371,Elsewhere,not detected elsewhere found (neutral propargyl radical CH2CCH is known toward TMC-1 itself),-
+431,Species,H2CCNH (ketenimine),H2CCNH
+431,Elsewhere,"Y -- Sgr B2(N) hot core (Lovas, Hollis, Remijan & Jewell 2006, ApJ 645, L137)",Sgr B2(N) (Lovas et al. 2006)
+241,Elsewhere,"not detected elsewhere found (neutral C3N is known, IRC+10216, Guelin & Thaddeus 1977 ApJ 212 L81)",-
+638,Species,C4H2N+ (cyanoallenylium cation),C4H2N+
+638,Elsewhere,not detected elsewhere found,-
+791,Species,HONC (isofulminic acid),HONC
+791,Elsewhere,not detected elsewhere found,-
+846,Elsewhere,not detected elsewhere found,-
+846,LabSpec,unable to verify,none
+667,Species,"H2CCCHNC (isocyanoallene, distinct from the known nitrile cyanoallene)",H2CCCHNC
+667,Elsewhere,not detected elsewhere found,-
+558,Species,HNCNH (carbodiimide),HNCNH
+558,Elsewhere,"Y -- Sgr B2(N) (McGuire, Loomis, Charness et al. 2012, ApJ 758, L33)",Sgr B2(N) (McGuire et al. 2012)
+795,Species,"CH2CHNC (vinyl isocyanide, distinct from vinyl cyanide CH2CHCN)",CH2CHNC
+795,Elsewhere,not detected elsewhere found,-
+1367,Species,NCNCNH (N-cyanocarbodiimide),NCNCNH
+1367,Elsewhere,not detected elsewhere found,-
+306,Elsewhere,"Y -- Sgr B2, Orion, W49 (Cheung et al. 1969, Nature 221, 626)","Sgr B2, Orion, W49 (Cheung et al. 1969)"
+491,Species,C2H2 (acetylene),C2H2
+491,Elsewhere,"Y -- IRC+10216 (Ridgway et al. 1976, Nature 264, 345)",IRC+10216 (Ridgway et al. 1976)
+491,LabSpec,JPL 026002 (vib-excited states only; centrosymmetric ground state has no pure rotation),none
+604,Elsewhere,not detected elsewhere found,-
+319,Species,CH3SiHO (methylsilanone),CH3SiHO
+319,Elsewhere,not detected elsewhere found,-
+299,Species,H2SiO (silanone),H2SiO
+299,Elsewhere,not detected elsewhere found,-
+534,Species,NH2CN (cyanamide; formula CH2N2 is ambiguous among 3 isomers),NH2CN
+534,Elsewhere,"Y -- Sgr B2(N) (Turner et al. 1975, ApJ 201, L149); also hot cores/protostars","Sgr B2(N), hot cores/protostars (Turner et al. 1975)"
+534,LabSpec,CDMS 042003,JPL 42003
+373,Species,C2 (dicarbon; SMILES is a zwitterion encoding of neutral C2),C2
+373,Elsewhere,"Y -- Cygnus OB2 No. 12, diffuse cloud, optical/electronic (Souza & Lutz 1977, ApJ 216, L49)",Cygnus OB2 No. 12 (Souza & Lutz 1977)
+373,LabSpec,"none (homonuclear diatomic, no permanent dipole -> no rotational spectrum)",none
+125,Species,"C4H6 (2-butyne, dimethylacetylene)",CH3CCCH3
+125,Elsewhere,"not detected elsewhere found (centrosymmetric, no dipole)",-
+486,Species,"C2H2O (ethynol, HC#C-OH; distinct from ketene H2C=C=O)",HCCOH
+486,Elsewhere,not detected elsewhere found,-
+564,Elsewhere,"Y -- Sgr B2, NGC 2024 (Ulich, Hollis & Snyder 1977, ApJ 217, L105)","Sgr B2, NGC 2024 (Ulich et al. 1977)"
+331,Species,CH3NH2 (methylamine),CH3NH2
+331,Elsewhere,"Y -- Sgr B2 and others (Kaifu et al. 1974, ApJ 191, L135)",Sgr B2 and others (Kaifu et al. 1974)
+1372,Elsewhere,"Y -- IRC+10216/CW Leonis (Guelin et al. 1997, A&A 317, L1); also L1527","IRC+10216/CW Leonis, L1527 (Guelin et al. 1997)"
+1372,LabSpec,unable to verify tag (entry exists),CDMS 085501
+576,Species,HDCO (monodeuterated formaldehyde; distinct isotopolog from ordinary H2CO),HDCO
+576,Elsewhere,Y -- L1351N/Heiles Cloud 2 (Langer et al. 1979),L1351N/Heiles Cloud 2 (Langer et al. 1979)
+581,Species,CH3CHNH (ethanimine),CH3CHNH
+581,Elsewhere,"Y -- Sgr B2(N) (Loomis et al. 2013, ApJ 765, 9)",Sgr B2(N) (Loomis et al. 2013)
+581,LabSpec,"unable to verify tag (lab spectrum published, Zaleski et al. 2013)",none
+542,Species,C3H4N (1-cyanoethyl radical),CH3CHCN
+542,Elsewhere,not detected elsewhere found,-
+272,Species,CN+ (cyanide cation),CN+
+272,Elsewhere,not detected elsewhere found (neutral CN is well known),-
+276,Elsewhere,"Y -- diffuse cloud HD 124314, UV absorption (Knauth, Andersson, McCandliss & Moos 2004, Nature 429, 636)",diffuse cloud HD 124314 (Knauth et al. 2004)
+276,LabSpec,"none (homonuclear diatomic, no dipole -- radio detection impossible in principle)",none
+511,Species,"HCSH (thiohydroxycarbene; distinct high-energy isomer of H2CS, not thioformaldehyde)",HCSH
+511,Elsewhere,not detected elsewhere found (never observed spectroscopically in the gas phase),-
+256,Species,C4H4O (but-2-ynal),CH3CCCHO
+256,Elsewhere,not detected elsewhere found,-
+315,Species,C2H6 (ethane),C2H6
+315,Elsewhere,"Y -- comets, IR (Mumma et al. 1996)",comets (Mumma et al. 1996)
+315,LabSpec,"none (nonpolar, radio detection impossible in principle)",none
+730,Species,"HOCH=CHCN (cyanovinyl alcohol, enol tautomer of cyanoacetaldehyde)",HOCH=CHCN
+730,Elsewhere,"not detected elsewhere found (keto tautomer cyanoacetaldehyde is known toward Sgr B2(N), a different isomer)",-
+1130,Species,c-C5H4S (cyclopentadienethione),c-C5H4S
+1130,Elsewhere,not detected elsewhere found,-
+309;320,Elsewhere,"CH4: Y -- NGC 7538 IRS9, IR (Lacy et al. 1991, ApJ 376, 556); CH3D: not detected elsewhere found",NGC 7538 IRS9 (Lacy et al. 1991)
+309;320,LabSpec,"CH4: none (Td symmetry, no dipole); CH3D: CDMS 017503 / JPL 17003",none
+69,Species,"C6H4O (2,4-hexadiynal)",C6H4O
+69,Elsewhere,not detected elsewhere found,-
+329,Species,CH3PH2 (methylphosphine),CH3PH2
+329,Elsewhere,"not detected elsewhere found (parent PH3 is known toward IRC+10216, a different molecule)",-
+329,LabSpec,none found,none
+34,Elsewhere,not detected elsewhere found,-
+232,Species,"NCCN (cyanogen, symmetric; distinct from its isomer isocyanogen CNCN, tentatively toward TMC-1)",NCCN
+232,Elsewhere,"not detected elsewhere found for this isomer; theory-only (Petrie, Millar & Markwick 2003, MNRAS 341, 609)",-
+232,LabSpec,"none (D-inf-h symmetry, zero dipole -- no rotational spectrum possible)",none
+178,Species,C4N2 (dicyanoacetylene),C4N2
+178,Elsewhere,"Y -- Titan's atmosphere only, solar-system ice/IR, not ISM (Samuelson et al. 1997, Planet. Space Sci. 45, 941)",Titan's atmosphere (Samuelson et al. 1997)
+178,LabSpec,"none (centrosymmetric, no dipole)",none
+571,Species,C2H5- (ethyl anion/carbanion),C2H5-
+571,Elsewhere,not detected elsewhere found,-
+694;695;696,Species,(Z)-pent-3-en-1-yne / pent-3-en-1-yne / (E)-pent-3-en-1-yne (3 acyclic isomers),CH3CHCHCCH
+694;695;696,Elsewhere,"N -- confirmed structurally distinct from cyclic c-C5H6 (the actual 2021 TMC-1 detection, Cernicharo et al. 2021, A&A 649, L15); not detected anywhere themselves",-
+694;695;696,LabSpec,none found,none
+429,Species,C4H6 (methylallene),CH3CHCCH2
+429,Elsewhere,"N -- lab-only so far, no astronomical detection yet (Mueller, Lewen, Guillemin & Schlemmer 2026, arXiv:2601.22872)",-
+404,Species,C2H2N+ (cyanomethyl cation),C2H2N+
+404,Elsewhere,not detected elsewhere found,-
+499,Elsewhere,not detected elsewhere found,-
+499,LabSpec,none found,none
+383,Species,"l-C3H3+ (1-propynylium, linear; distinct from cyclic c-C3H3+ and neutral propargyl)",l-C3H3+
+383,Elsewhere,not detected elsewhere found,-
+1210,Species,C6H8 (hex-2-en-4-yne),C6H8
+1210,Elsewhere,not detected elsewhere found,-
+438,Species,C2H4 (ethylene),C2H4
+438,Elsewhere,"Y -- IRC+10216 (Betz 1981, ApJ 244, L103)",IRC+10216 (Betz 1981)
+438,LabSpec,"none (D2h symmetry, no dipole; IR-only detection)",none
+644,Species,"1-penten-3-yne (C5H6, acyclic)",CH3CCCHCH2
+644,Elsewhere,N -- confirmed structurally distinct from cyclic c-C5H6 (the actual 2021 TMC-1 detection); not detected anywhere itself,-
+644,LabSpec,none found,none
+1269,Species,"CH3NH (methylaminyl / N-methylazanyl radical, distinct from the isomeric aminomethyl radical CH2NH2 and from methylamine CH3NH2)",CH3NH
+1269,Elsewhere,not detected elsewhere found (no measured gas-phase rotational spectrum located),-
+1269,LabSpec,none found,none
+482,Species,"C4H4O (buta-2,3-dienal, allenic aldehyde)",CH2CCHCHO
+482,Elsewhere,not detected elsewhere found,-
+465,Species,"CH4Si (silene, H2C=SiH2)",CH4Si
+465,Elsewhere,N -- searched (Herschel IRC+10216 survey upper limit); distinct from the methylsilylene isomer,-
+465,LabSpec,none found,none
+308,Species,SiH4 (silane),SiH4
+308,Elsewhere,"Y -- IRC+10216, IR rovibrational nu4 band (Goldhaber & Betz 1984, ApJ 279, L55)",IRC+10216 (Goldhaber & Betz 1984)
+308,LabSpec,none (IR-only detection; no rotational catalog entry),none
+258,Elsewhere,not detected elsewhere found,-
+258,LabSpec,none found,none
+282,Species,"HNN (neutral diazenyl radical; distinct from the diazenylium CATION N2H+, which IS a classic, ubiquitous TMC-1 species -- not to be confused)",HNN
+282,Elsewhere,not detected elsewhere found (only the cation N2H+ is detected/catalogued),-
+282,LabSpec,none found,none
+619,Elsewhere,not detected elsewhere found (postulated-only in theory papers),-
+277,Species,HSiS+ (thiosilylium hydride),HSiS+
+277,Elsewhere,not detected elsewhere found,-
+621,Elsewhere,not detected elsewhere found (postulated-only in theory papers),-
+473,Species,C2H6Si (methylsilene),C2H6Si
+473,Elsewhere,not detected elsewhere found,-
+473,LabSpec,none found,none
+485,Species,C2H3P (ethynylphosphine),C2H3P
+485,Elsewhere,not detected elsewhere found for this isomer (distinct from the known CH3CP isomer),-
+485,LabSpec,none found for this isomer,none
+300,Species,H3O+ (hydronium),H3O+
+300,Elsewhere,"Y -- Orion-KL/OMC-1, Sgr B2 (Wootten et al. 1986, A&A 166, L15; Hollis et al. 1986, Nature 322, 524)","Orion-KL/OMC-1, Sgr B2 (Wootten et al. 1986)"
+300,LabSpec,entry exists; tag unable to verify,CDMS 019503
+530,Species,HOCS+ (O-protonated OCS),HOCS+
+530,Elsewhere,"Y -- Galactic Center cloud G+0.693-0.027 (Sanz-Novo et al. 2024, ApJ 965, 149)",G+0.693-0.027 (Sanz-Novo et al. 2024)
+44,Species,"C6H6 (hexa-2,4-diyne, dimethyldiacetylene; distinct from benzene)",C6H6
+44,Elsewhere,"N -- not detected (also centrosymmetric/nonpolar, radio-invisible in principle)",-
+392,Elsewhere,not detected elsewhere found,-
+392,LabSpec,none found,none
+328,Species,CH3SH (methanethiol),CH3SH
+328,Elsewhere,"Y -- Sgr B2(OH), G327.3-0.6, IRAS16293-2422, Sgr B2(N) (Linke, Frerking & Thaddeus 1979, ApJ 234, L139)","Sgr B2(OH), G327.3-0.6, IRAS16293-2422, Sgr B2(N) (Linke et al. 1979)"
+403,Species,HSiO+ (H on Si; mislabeled 'HOSi+' in the raw list),HSiO+
+403,Elsewhere,not detected elsewhere found,-
+403,LabSpec,none (only theoretical spectroscopic constants exist),none
+723,Species,C3HNO (cyanoketene),C3HNO
+723,Elsewhere,"N -- explicitly searched, not detected (Margules et al. 2020, A&A 638, A3); oxygen-analog of cyanothioketene, which IS toward TMC-1 (a different, S-bearing molecule)",-
+723,LabSpec,entry exists; tag unable to verify,none
+1270,Species,H2N-NH (hydrazinyl/diazanyl radical),H2N-NH
+1270,Elsewhere,not detected elsewhere found (known only from combustion/rocket-fuel gas-phase kinetics literature),-
+1270,LabSpec,none found,none
+284,Species,CH2NH2+ (protonated methanimine),CH2NH2+
+284,Elsewhere,not detected elsewhere found,-
+284,LabSpec,none found,none
+627,Elsewhere,not detected elsewhere found,-
+627,LabSpec,none found,none
+537,Species,CH3OCN (methyl cyanate; distinct from methyl isocyanate CH3NCO),CH3OCN
+537,Elsewhere,"N -- explicitly searched toward TMC-1 itself, non-detection/upper limit (Kolesnikova et al. 2016, A&A 591, A75)",-
+537,LabSpec,entry exists; tag unable to verify,CDMS 057511
+311,Elsewhere,not detected elsewhere found,-
+311,LabSpec,none found,none
+295,Elsewhere,not detected elsewhere found,-
+295,LabSpec,none found,none
+501,Species,"C2H+ (ethynylium; distinct from the neutral radical C2H, known toward TMC-1)",C2H+
+501,Elsewhere,not detected elsewhere found,-
+517,Species,HCS (thioformyl radical),HCS
+517,Elsewhere,"Y -- L483, a Class 0 protostellar core (Agundez, Marcelino, Cernicharo & Tafalla 2018, A&A 611, L1; a metastable isomer HSC was detected in the same paper). NOT toward TMC-1 -- correction to an initial hypothesis that this task checked and ruled out",L483 (Agundez et al. 2018)
+517,LabSpec,entry exists; tag unable to verify,CDMS 045507
+313,Species,H2POH (phosphinous acid / hydroxyphosphine; a tautomer of H3PO),H2POH
+313,Elsewhere,"not detected elsewhere found (related but distinct P-O-H species -- PO, PN, HPO -- are known toward star-forming regions; not this species)",-
+313,LabSpec,none found,none
+516,Species,"CH3CO (neutral acetyl radical; distinct from the acetyl CATION CH3CO+, which IS ALREADY DETECTED TOWARD TMC-1 -- Cernicharo et al. 2021, A&A 646, L7 -- not to be confused with this neutral radical)",CH3CO
+516,Elsewhere,"not detected elsewhere found for the neutral radical (lab spectrum only, Hirota et al. 2006)",-
+516,LabSpec,none found for the neutral radical,none
+561;1345,Species,"NH2 (amidogen radical) + NHD (deuterated isotopologue, multi-member candidate)",NH2 / NHD
+561;1345,Elsewhere,"Y -- NH2: Sgr B2, absorption (van Dishoeck, Jansen, Schilke & Phillips 1993, ApJ 416, L83); NHD/ND2: IRAS 16293-2422 (Melosso et al. 2020, A&A 641, A153). NOT toward TMC-1 in either case",Sgr B2 (van Dishoeck et al. 1993)
+561;1345,LabSpec,entry exists; tag unable to verify,none
+397,Elsewhere,not detected elsewhere found,-
+397,LabSpec,none found,none
+192,Species,C7N (neutral radical; distinct from the detected C7N- anion),C7N
+192,Elsewhere,not detected elsewhere found (even the detected anion has no lab data on record),-
+310,Species,H3PO2 (phosphinic/hypophosphorous acid),H3PO2
+310,Elsewhere,not detected elsewhere found,-
+834,Species,"l-C6 (linear hexacarbon, symmetric)",l-C6
+834,Elsewhere,not detected elsewhere found,-
+834,LabSpec,none (symmetric/nonpolar),none
+1268,Species,H2NSi+ (HNSiH+),H2NSi+
+1268,Elsewhere,not detected elsewhere found (theoretical only),-
+1268,LabSpec,none (theoretical only),none
+119,Elsewhere,not detected elsewhere found (isovalent neutral C4H and anion C4H- are both known),-
+119,LabSpec,none found,none
+330,Species,CH3O (methoxy radical; distinct from its isomer hydroxymethyl CH2OH),CH3O
+330,Elsewhere,"Y -- B1-b (Cernicharo, Agundez, Guelin et al. 2012, ApJ 759, L43); also L1495A-S, L1689B, L1709A, and TMC-2 (Bacmann & Faure 2016, A&A 587, A130). NOT TMC-1 -- TMC-2 is a DIFFERENT Taurus core from TMC-1/the cyanopolyyne peak, an easy name confusion this task's own item-2 inventory match had left unresolved; re-verified and ruled out this task",B1-b (Cernicharo et al. 2012)
+330,LabSpec,none found,none
+598,Species,O2 (molecular oxygen),O2
+598,Elsewhere,"Y -- rho Ophiuchi (Larsson et al. 2007, A&A 466, 999; Liseau et al. 2012, A&A 541, A73) and Orion (Goldsmith et al. 2011, ApJ 737, 96). NOT TMC-1","rho Ophiuchi, Orion (Larsson et al. 2007)"
+323,Species,NH2OH (hydroxylamine),NH2OH
+323,Elsewhere,"Y -- G+0.693-0.027 (Rivilla et al. 2020, ApJ 899, L28). NOT TMC-1",G+0.693-0.027 (Rivilla et al. 2020)
+323,LabSpec,entry exists; tag unable to verify,CDMS 033503
+603,Species,S2 (disulfur),S2
+603,Elsewhere,"Y -- Comet IRAS-Araki-Alcock, UV electronic emission bands (A'Hearn, Schleicher & Feldman 1983, ApJ 274, L99). NOT TMC-1 -- homonuclear diatomic, zero dipole moment, no rotational spectrum possible in principle",Comet IRAS-Araki-Alcock (A'Hearn et al. 1983)
+603,LabSpec,none (no rotational spectrum possible),none
+216,Elsewhere,not detected elsewhere found,-
+216,LabSpec,none found,none
+452,Species,CH2=CH+ (classical vinyl cation),CH2=CH+
+452,Elsewhere,not detected elsewhere found (laboratory ion-chemistry/kinetics literature only),-
+452,LabSpec,none found,none
+195,Species,"C5H2N (linear radical .CH=CH-C#C-C#N; distinct from C5N, the cyanobutadiynyl radical, which has no H and IS known toward TMC-1 -- not to be confused)",CHCHCCCN
+195,Elsewhere,not detected elsewhere found; no laboratory rotational spectrum or catalog entry located under this exact formula/connectivity,-
+195,LabSpec,none found,none
+412,Species,"C2H4N+ (as drawn: a carbon-protonated iminium form, CH3-C(+)=N-H; the standard literature structure for this formula is instead N-protonated acetonitrilium, linear CH3-C#N-H+ -- this SMILES does not clearly match that known isomer)",CH3CNH+
+412,Elsewhere,not detected elsewhere found (protonated acetonitrile/acetonitrilium has lab/theoretical characterization only),-
+412,LabSpec,none found,none
+56,Elsewhere,not detected elsewhere found,-
+56,LabSpec,none found,none
+94,Species,"2,4-pentadiynal (C5H2O)",HC4CHO
+94,Elsewhere,"N -- lab-only, no astronomical detection found",-
+94,LabSpec,CDMS 078501,CDMS 078505
+345,Species,c-C3H3+ (cyclopropenylium cation),c-C3H3+
+345,Elsewhere,"N (not a secure spectroscopic identification) -- only a 'probable' detection via in-situ mass spectrometry in Comet Halley (Korth et al. 1989, Nature 337, 53), not spectroscopy. NOT TMC-1 -- D3h-symmetric, zero dipole moment, no rotational spectrum possible in principle. (Easily confused with l-C3H+, the propargyl radical C3H3, and c-C3H2 -- all different species that ARE known toward TMC-1; none is this cation)",-
+345,LabSpec,none (no rotational spectrum possible),none
+1327,(row),(absent),(present)
+312,(row),(absent),(present)
+334,(row),(present),(absent)
+418,(row),(present),(absent)

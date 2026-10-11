@@ -1,0 +1,79 @@
+formula,smiles,log10_column_density_cm2,reference,detection_window,source,confidence,n_fragments,n_oov,coverage,vectorize_ok,note
+H2CCHCHO,C=CC=O,11.34,Agundez et al. 2021,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C2H3OH,OC=C,12.4,Agundez et al. 2021,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+HCOOCH3,O=COC,12.04,Agundez et al. 2021,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+CH3OCH3,COC,12.4,Agundez et al. 2021,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+CH3C7N,CC#CC#CC#CC#N,10.93,Siebert et al. 2022,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,18,0,1.0,True,
+2-C9H7CN,N#CC1=Cc2ccccc2C1,11.32,Sita et al. 2022,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,22,0,1.0,True,
+C10H-,C#CC#CC#CC#CC#[C-],11.61,Remijan et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,20,0,1.0,True,
+E-1-C4H5CN,C=C/C=C/C#N,10.58,Cooke et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+o-C6H4,C1=CC#CC=C1,11.7,Cernicharo et al. 2021d,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+HCCCO,C#C[C]=O,11.2,Cernicharo et al. 2021c,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C5O,[C]=C=C=C=C=O,10.18,Cernicharo et al. 2021c,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+C5H+,[C]=C=C=C=[CH+],10.94,Cernicharo et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+C3H+,[C]=C=[CH+],10.38,Cernicharo et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,1,0.833,True,
+CH2CCHC4H,C=C=CC#CC#C,12.34,Fuentetaja et al. 2022b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,14,0,1.0,True,
+CH2CCHC3N,C=C=CC#CC#N,11.08,Fuentetaja et al. 2022b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,14,0,1.0,True,
+c-C5H4CCH2,C=C=C1C=CC=C1,12.43,Cernicharo et al. 2022c,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,14,0,1.0,True,
+HCCCHCCC,C#CC=C=C=[C],11.11,Fuentetaja et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+HCCCCS,[CH]=C=C=C=S,10.98,Fuentetaja et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,1,0.9,True,
+NC4NH+,C(#C[C+]=N)C#N,10.04,Agundez et al. 2023a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+C7N-,[C]#CC#CC#CC#N,12.38,Cernicharo et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,16,0,1.0,True,
+CH3CHCO,CC=C=O,11.18,Fuentetaja et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C2H5OH,CCO,12.04,Agundez et al. 2023b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+CH3COCH3,CC(=O)C,11.15,Agundez et al. 2023b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C2H5CHO,CCC=O,11.28,Agundez et al. 2023b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+trans-CH3CHCHCN,C/C=C/C#N,10.7,Cernicharo et al. 2022d,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+cis-CH3CHCHCN,C/C=C\C#N,11.11,Cernicharo et al. 2022d,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+CH2C(CH3)CN,CC(=C)C#N,11.0,Cernicharo et al. 2022d,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+CH2CHCH2CN,C=CCC#N,11.53,Cernicharo et al. 2022d,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+NCS,[S]C#N,11.89,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,1,0.833,True,
+HCCS,[CH]=C=S,11.83,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,1,0.833,True,
+H2CCS,C=C=S,11.89,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+H2CCCS,C=C=C=S,11.57,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C4S,[C]=C=C=C=S,10.58,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+C5S,[C]=C=C=C=C=S,10.7,Cernicharo et al. 2021f,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+c-C3HCCH,C#CC1=C[C]1,11.49,Cernicharo et al. 2021b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,2,0.8,True,
+c-C5H6,C1C=CC=C1,13.08,Cernicharo et al. 2021b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+c-C9H8,C1C=CC2=CC=CC=C21,12.98,Burkhardt et al. 2021b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,18,0,1.0,True,
+HCSCN,S=CC#N,12.11,Cernicharo et al. 2021g,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+HCSCCH,C#CC=S,11.51,Cernicharo et al. 2021g,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+CH2CCCN,[CH2]C#CC#N,11.2,Cabezas et al. 2021a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+c-1-C5H5CCH,C#CC1=CC=CC1,12.15,Cernicharo et al. 2021e,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,14,0,1.0,True,
+c-2-C5H5CCH,C#CC1=CCC=C1,12.3,Cernicharo et al. 2021e,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,14,0,1.0,True,
+CH2CCH,C=C=[CH],14.0,Agundez et al. 2022b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+HC7NH+,C#CC#CC#CC#[NH+],10.74,Cabezas et al. 2022c,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,16,0,1.0,True,
+HCCNCH+,C#C[N+]#C,10.48,Agundez et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+c-C5H,C1(C#C)=C=[C]1,10.95,Cabezas et al. 2022a,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,1,0.9,True,
+H2CCCH+,C#C[CH2+],11.73,Silva et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,0,1.0,True,
+C3N-,[C-]#CC#N,11.11,Cernicharo et al. 2020b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+C5N-,[C-]#CC#CC#N,11.41,Cernicharo et al. 2020b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,12,0,1.0,True,
+H2CCCN,C=CC#N,11.4,Cabezas et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+l-H2C5,C=C=C=C=[C],10.26,Cabezas et al. 2021c,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,10,0,1.0,True,
+HCCS+,C#C[S+],12.04,Cabezas et al. 2022b,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,6,1,0.833,True,
+C4H8,CC(C)=C,13.43,Fatima et al. 2023,2021-08_to_2023-09,"Shay et al. 2025a, Table C1 (Appendix C)",high,8,0,1.0,True,
+CH3CHS,CC=S,10.99,"Agundez et al. 2025, A&A (arXiv:2501.05125)",post-2023-09,arXiv:2501.05125 (fetched directly),high — structure and CD (9.8e10) confirmed in paper text,6,0,1.0,True,
+1-cyanoacenaphthylene,N#CC1=Cc2cccc3cccc1c23,11.98,"Cernicharo et al. 2024, A&A (doi:10.1051/0004-6361/202452196)",post-2023-09,"A&A full-text (fetched directly) + structure reconstructed from acenaphthylene ring topology (CN on the ethylene-bridge carbon, position 1) validated by molecular formula (C13H7N), then independently re-verified against a user-supplied reference image (ball-and-stick renders of all 4 acenaphthylene mono-CN isomers, numbered per IUPAC) via RDKit neighbor-topology matching",high — position confirmed both by the paper's own description and by topology-matching against the reference structure image,28,0,1.0,True,
+5-cyanoacenaphthylene,N#Cc1ccc2c3c(cccc13)C=C2,11.98,"Cernicharo et al. 2024, A&A (doi:10.1051/0004-6361/202452196)",post-2023-09,"A&A full-text (fetched directly) + structure reconstructed from acenaphthylene ring topology + standard IUPAC numbering (position 5 = ring carbon adjacent to the peri-fusion carbon, farthest from the bridge) validated by molecular formula (C13H7N), then independently re-verified against the same reference image via RDKit neighbor-topology matching",high — same re-verification as 1-cyanoacenaphthylene,28,0,1.0,True,
+3-cyanoacenaphthylene,N#Cc1ccc2cccc3c2c1C=C3,11.85,"Cernicharo et al. 2026, A&A (doi:10.1051/0004-6361/202557893)",post-2023-09,"A&A full-text (fetched directly; CD = 7.0e11 cm-2 quoted for 3-CNACY) + structure built by attaching CN directly to the acenaphthylene parent's pre-identified symmetry-class-4 atom (the ""3,8"" position, adjacent to the near-bridge fusion carbon) using RDKit RWMol, i.e. the position is fixed by construction rather than inferred after the fact","high — position fixed by direct construction on a pre-classified symmetry atom, matching the same reference image's ""3-cyanoacenaphthylene"" render",28,0,1.0,True,
+4-cyanoacenaphthylene,N#Cc1cc2c3c(cccc3c1)C=C2,11.7,"Cernicharo et al. 2026, A&A (doi:10.1051/0004-6361/202557893)",post-2023-09,"A&A full-text (fetched directly; CD = 5.0e11 cm-2 quoted for 4-CNACY) + structure built by attaching CN directly to the acenaphthylene parent's pre-identified symmetry-class-2 atom (the ""4,7"" middle position) using RDKit RWMol, i.e. the position is fixed by construction rather than inferred after the fact","high — position fixed by direct construction on a pre-classified symmetry atom, matching the same reference image's ""4-cyanoacenaphthylene"" render",28,0,1.0,True,
+1-cyanopyrene,N#Cc1ccc2ccc3cccc4ccc1c2c34,12.18,"Wenzel et al. 2024, Nature Astronomy (arXiv:2410.00670)",post-2023-09,"arXiv full-text (fetched directly; CD = 1.52e12 cm-2 quoted for the 1-isomer) + structure built by identifying pyrene's 3 symmetry-distinct CH environments via RDKit canonical ranking and placing CN at the 4-atom (""1,3,6,8"") class","high — regiochemistry independently confirmed against a user-supplied reference image (ball-and-stick structure with all 4 possible pyrene mono-CN positions labeled) via RDKit neighbor-topology matching, not just the site-multiplicity argument alone",36,0,1.0,True,
+2-cyanopyrene,N#Cc1cc2ccc3cccc4ccc(c1)c2c34,12.92,"Wenzel et al. 2024, Nature Astronomy (arXiv:2410.00670)",post-2023-09,"arXiv full-text (fetched directly) + structure built by identifying pyrene's 3 symmetry-distinct CH environments via RDKit canonical ranking (multiplicities 4:2:4, matching the paper's own stated 2:1:2 isomer abundance ratio) and placing CN at the unique 2-atom (""position 2"") class","high — position-type confirmed by matching the paper's stated site-multiplicity ratio, and independently re-verified via RDKit neighbor-topology matching against the same reference image used for 1-cyanopyrene",36,0,1.0,True,
+4-cyanopyrene,N#Cc1cc2cccc3ccc4cccc1c4c32,13.12,"Wenzel et al. 2024, Nature Astronomy (arXiv:2410.00670)",post-2023-09,"same method as 2-cyanopyrene, CN placed at one of the 4-atom ""K-region"" class",high — same re-verification as 2-cyanopyrene,36,0,1.0,True,
+cyanocoronene (C24H11CN),N#Cc1cc2ccc3ccc4ccc5ccc6ccc1c1c6c5c4c3c21,12.43,"2025, ApJL (arXiv:2504.05232)",post-2023-09,"arXiv full-text (fetched directly); paper itself confirms coronene's D6h symmetry makes all 12 CH sites equivalent, so there is only one possible mono-cyano isomer -- no regiochemistry ambiguity at all","high — symmetry guarantees a unique structure, confirmed in the paper's own text",52,0,1.0,True,
+phenalene (c-C13H10),C1C2=CC=CC3=C2C(=CC=C3)C=C1,13.45,2025 (arXiv:2508.13857),post-2023-09,"arXiv full-text (fetched directly, CD only) + structure is the well-established parent 1H-phenalene PAH (peri-fused tricyclic, one CH2) -- no substituent regiochemistry involved, just the parent hydrocarbon","high — CD confirmed in paper text ((2.8e13), structure is unambiguous (no substituent placement question)",26,0,1.0,True,
+1-cyano propargyl radical (HCCCHCN),C#C[CH]C#N,11.34,2025 (arXiv:2501.01938),post-2023-09,arXiv full-text (fetched directly),"high — connectivity (H-C#C-CH*-C#N, radical on the CH) and CD (2.2e11) confirmed in paper text",10,1,0.9,True,
+C5H4,C#CCC#C,12.7,"Fuentetaja et al. 2024, arXiv:2407.07466",2023-09_to_2026-09-19,Task5 audit 2026-09-19,high,,,,True,"1,4-pentadiyne (HCCCH2CCH); QUIJOTE; TMC-1 confirmed"
+CH2CHCHS,C=CC=S,,"A&A June 2025 (aa54670-25), 'Discovery of propenethial in TMC-1'",2023-09_to_2026-09-19,Task5 audit 2026-09-19,high,,,,True,"propenethial; QUIJOTE; TMC-1 by title, CD not extracted -- needs follow-up"
+HC5N+,[CH]=C=C=C=C=[N+],11.0,"A&A June 2024 (aa50801-24), arXiv:2406.06204",2023-09_to_2026-09-19,Task5 audit 2026-09-19,high,,,,True,"pentacyanopolyyne cation; QUIJOTE; SMILES constructed by cumulated-cation analogy, not quoted verbatim from paper"
+HC7N+,[CH]=C=C=C=C=C=C=[N+],10.36,"A&A June 2024 (aa50801-24), arXiv:2406.06204",2023-09_to_2026-09-19,Task5 audit 2026-09-19,high,,,,True,"heptacyanopolyyne cation; QUIJOTE; SMILES constructed by cumulated-cation analogy, not quoted verbatim from paper"
+HC3N+,[CH]=C=C=[N+],,"A&A July 2024 (aa51081-24), arXiv:2407.02121",2023-09_to_2026-09-19,"Task5 audit 2026-09-19, TMC-1 verified by follow-up subagent 2026-09-19",high,,,,True,cyanoacetylene radical cation; QUIJOTE; SMILES constructed by cumulated-cation analogy; CD not extracted
+HNC5,N=C=C=C=C=[C],10.11,"Fuentetaja et al. 2024, A&A Aug 2024 (aa51319-24)",2023-09_to_2026-09-19,Task5 audit 2026-09-19,high,,,,True,"iminopentadienylidene; QUIJOTE; SMILES constructed carbene analogy, not quoted verbatim"
+c-C3H2S,S=C1C=C1,10.76,"Remijan et al. 2025, ApJ, 982, 191, arXiv:2501.06343",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,cyclopropenethione; GOTHAM
+NC3S,N#CC#C[S],11.15,"Cernicharo et al. 2024, A&A, 688, L13, arXiv:2407.15275",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,radical; QUIJOTE
+HC3S,C#CC#[S],11.18,"Cernicharo et al. 2024, A&A, 688, L13, arXiv:2407.15275",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,radical; QUIJOTE; same paper as NC3S
+NCCHCS,N#CC=C=S,11.08,"Cabezas et al. 2024, A&A, 686, A121, arXiv:2405.02033",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,cyanothioketene; QUIJOTE
+CH2(CN)2,N#CCC#N,11.26,"Agundez et al. 2024, A&A, 688, L31, arXiv:2408.02843",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,malononitrile; QUIJOTE
+NC-CHCH-CN(Z),N#C/C=C\C#N,10.71,"Agundez et al. 2024, A&A, 688, L31, arXiv:2408.02843",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,maleonitrile; QUIJOTE; same paper as malononitrile
+HCNS,C#[N+][S-],9.95,"Cernicharo et al. 2024, A&A, 682, L4, arXiv:2401.11785",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,"thiofulminic acid; QUIJOTE; SMILES constructed by analogy to fulminic acid HCNO, not quoted verbatim"
+l-H2C3O,C=C=C=O,10.57,"Esplugues et al. 2026, A&A, 705, A206, arXiv:2511.19775",2023-09_to_2026-09-19,gotham_quijote_census_v2 2026-09-19,high,,,,True,linear propadienone; QUIJOTE

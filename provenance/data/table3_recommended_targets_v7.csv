@@ -1,0 +1,101 @@
+Rank,Species,LeeID,Formula,SMILES,Class,Score,logN,sigma,dist,mu,MW,Reasons,Elsewhere,LabSpec,Note
+1,C5N+,185,C5N+,[C+]#CC#CC#N,ion,0.6825,12.004,1.609,4.83,11.1,74.062,low predicted line-confusion/blend risk; large dipole moment,-,none,
+2,HCNCC,689,C3HN,[C-]#C[N+]#C,closed-shell,0.5782,12.046,1.878,2.43,9.4,51.048,FLAG: does not match a known/named isomer of this formula; low predicted line-confusion/blend risk; large dipole moment,-,none,uncommon isomer
+3,C9H,871,C9H,[C+]#CC#C[C]=C=C=C=[CH-],radical,0.5635,9.876,2.284,7.35,15.542,109.107,large dipole moment; low predicted line-confusion/blend risk,-,CDMS 109501,
+4,HSiN,273,HNSi,N#[SiH],closed-shell,0.4553,12.536,1.318,1.15,5.0,43.101,FLAG: SMILES does not match the given formula/name label; low predicted line-confusion/blend risk; low molecular weight,-,none,name corrected
+6,l-C7H2,202,C7H2,[C+]#CC#CC#C[CH2-],closed-shell,0.4007,11.923,2.209,4.94,8.1,86.093,low predicted line-confusion/blend risk; large dipole moment,-,CDMS 086501,
+7,CH3CC-,371,C3H3-,[C-]#CC,ion,0.3937,12.225,1.548,2.3,7.0,39.057,low predicted line-confusion/blend risk; low molecular weight,-,none,
+8,H2CCNH,431,C2H3N,C=C=N,closed-shell,0.3863,13.842,1.828,3.2,1.709,41.053,low predicted line-confusion/blend risk; low molecular weight,Sgr B2(N) (Lovas et al. 2006),CDMS 041503,
+9,C3N+,241,C3N+,[C+]#CC#N,ion,0.3848,12.624,1.481,2.02,7.2,50.04,low predicted line-confusion/blend risk; large dipole moment,-,none,
+10,C4H2N+,638,C4H2N+,C=C=[C+]C#N,ion,0.3826,12.26,1.683,3.73,7.5,64.067,low predicted line-confusion/blend risk; large dipole moment,-,none,
+11,HONC,791,CHNO,[C-]#[N+]O,closed-shell,0.381,11.52,1.747,4.16,3.448,43.025,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 043512,
+12,l-C9H2,846,C9H2,[C+]#CC#CC#CC#C[CH2-],closed-shell,0.3465,11.672,2.295,5.15,9.8,110.115,large dipole moment; low predicted line-confusion/blend risk,-,none,
+13,H2CCCHNC,667,C4H3N,[C-]#[N+]C=C=C,closed-shell,0.3396,11.418,1.891,5.23,4.016,65.075,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 065519,uncommon isomer
+14,HNCNH,558,CH2N2,N=C=N,closed-shell,0.3296,15.123,2.497,3.41,2.4,42.041,high predicted column density; low predicted line-confusion/blend risk,Sgr B2(N) (McGuire et al. 2012),CDMS 042506,
+15,CH2CHNC,795,C3H3N,[C-]#[N+]C=C,closed-shell,0.3256,11.162,1.942,5.22,3.493,53.064,low predicted line-confusion/blend risk; low molecular weight,-,none,uncommon isomer
+16,NCNCNH,1367,C2HN3,N#CN=C=N,closed-shell,0.3213,12.394,2.185,4.6,4.966,67.051,low predicted line-confusion/blend risk; large dipole moment,-,none,
+17,H2O,306,H2O,O,closed-shell,0.3117,14.019,2.013,1.22,2.3,18.015,low predicted line-confusion/blend risk; low molecular weight,"Sgr B2, Orion, W49 (Cheung et al. 1969)",JPL 18003,ground-based observation impractical
+18,C2H2,491,C2H2,C#C,closed-shell,0.3044,13.337,1.515,1.97,0.0,26.038,low predicted line-confusion/blend risk; low molecular weight,IRC+10216 (Ridgway et al. 1976),none,not observable by rotational spectroscopy
+19,HNS,604,HNS,N=S,closed-shell,0.2893,14.712,1.901,1.86,1.703,47.082,low predicted line-confusion/blend risk; high predicted column density,-,none,
+20,CH3SiHO,319,CH4OSi,C[SiH]=O,closed-shell,0.2867,12.465,1.572,1.63,4.624,60.128,low predicted line-confusion/blend risk; low molecular weight,-,none,
+21,H2SiO,299,H2OSi,O=[SiH2],closed-shell,0.2818,12.177,1.439,1.0,4.0,46.101,low predicted line-confusion/blend risk; low molecular weight,-,none,
+22,NH2CN,534,CH2N2,N#CN,closed-shell,0.2803,11.718,1.729,1.72,4.9,42.041,low predicted line-confusion/blend risk; low molecular weight,"Sgr B2(N), hot cores/protostars (Turner et al. 1975)",JPL 42003,
+23,C2,373,C2,[C+]#[C-],closed-shell,0.2739,13.171,1.249,0.65,0.0,24.022,low predicted line-confusion/blend risk; low molecular weight,Cygnus OB2 No. 12 (Souza & Lutz 1977),none,not observable by rotational spectroscopy
+24,CH3CCCH3,125,C4H6,CC#CC,closed-shell,0.2635,13.046,1.758,4.29,0.0,54.092,low predicted line-confusion/blend risk; low molecular weight,-,none,not observable by rotational spectroscopy
+25,HCCOH,486,C2H2O,C#CO,closed-shell,0.2631,12.617,1.582,2.14,1.803,42.037,low predicted line-confusion/blend risk; low molecular weight,-,none,uncommon isomer
+26,HNO,564,HNO,N=O,closed-shell,0.2625,13.264,1.835,1.77,1.86,31.014,low predicted line-confusion/blend risk; low molecular weight,"Sgr B2, NGC 2024 (Ulich et al. 1977)",JPL 31005,
+27,CH3NH2,331,CH5N,CN,closed-shell,0.2526,13.178,1.836,1.95,1.552,31.058,low predicted line-confusion/blend risk; low molecular weight,Sgr B2 and others (Kaifu et al. 1974),JPL 31008,
+28,C7H,1372,C7H,[C+]#C[C]=C=C=C=[CH-],radical,0.2491,10.114,2.259,6.27,9.832,85.085,large dipole moment; low predicted line-confusion/blend risk,"IRC+10216/CW Leonis, L1527 (Guelin et al. 1997)",CDMS 085501,
+29,HDCO,576,CH2O,[2H]C=O,closed-shell,0.2443,11.731,1.736,2.24,2.6,31.032,low predicted line-confusion/blend risk; low molecular weight,L1351N/Heiles Cloud 2 (Langer et al. 1979),JPL 31003,
+30,CH3CHNH,581,C2H5N,CC=N,closed-shell,0.2402,14.635,2.542,2.82,2.766,43.069,low predicted line-confusion/blend risk; high predicted column density,Sgr B2(N) (Loomis et al. 2013),none,
+31,CH3CHCN,542,C3H4N,C[CH]C#N,radical,0.232,12.991,1.814,3.48,4.198,54.072,low predicted line-confusion/blend risk; low molecular weight,-,none,
+32,CN+,272,CN+,[C+]#N,ion,0.2281,12.899,1.175,0.82,2.2,26.018,low predicted line-confusion/blend risk; low molecular weight,-,none,
+33,N2,276,N2,N#N,closed-shell,0.2205,12.323,1.397,1.62,0.0,28.014,low predicted line-confusion/blend risk; low molecular weight,diffuse cloud HD 124314 (Knauth et al. 2004),none,not observable by rotational spectroscopy
+34,HCSH,511,CH2S,C#[SH],closed-shell,0.2159,13.839,2.052,1.35,3.138,46.094,low predicted line-confusion/blend risk; low molecular weight,-,none,uncommon isomer
+35,CH3CCCHO,256,C4H4O,CC#CC=O,closed-shell,0.1924,11.137,2.044,4.33,4.123,68.075,low predicted line-confusion/blend risk; low molecular weight,-,none,
+36,C2H6,315,C2H6,CC,closed-shell,0.1917,13.112,1.727,1.75,0.0,30.07,low predicted line-confusion/blend risk; low molecular weight,comets (Mumma et al. 1996),none,not observable by rotational spectroscopy
+37,HOCH=CHCN,730,C3H3NO,N#CC=CO,closed-shell,0.1888,11.002,2.339,5.2,4.701,69.063,low predicted line-confusion/blend risk; large dipole moment,-,none,
+38,c-C5H4S,1130,C5H4S,S=C1C=CC=C1,closed-shell,0.1881,14.91,2.874,6.08,2.7,96.154,high predicted column density; low predicted line-confusion/blend risk,-,none,
+39,CH4 / CH3D,309;320,CH4,C;[2H]C,closed-shell,0.1852,12.602,1.735,1.445,0.0,16.546,low predicted line-confusion/blend risk; low molecular weight,NGC 7538 IRS9 (Lacy et al. 1991),none,not observable by rotational spectroscopy
+40,C6H4O,69,C6H4O,CC#CC#CC=O,closed-shell,0.185,10.854,2.066,5.38,4.94,92.097,low predicted line-confusion/blend risk; large dipole moment,-,none,
+41,CH3PH2,329,CH5P,CP,closed-shell,0.1818,13.113,1.686,1.51,1.36,48.025,low predicted line-confusion/blend risk; low molecular weight,-,none,
+42,C6H+,34,C6H+,[C+]#CC#CC#C,ion,0.1807,12.248,1.462,2.47,5.2,73.074,low predicted line-confusion/blend risk; large dipole moment,-,none,
+44,NCCN,232,C2N2,N#CC#N,closed-shell,0.1801,12.234,1.612,3.27,0.0,52.036,low predicted line-confusion/blend risk; low molecular weight,-,none,not observable by rotational spectroscopy
+45,C4N2,178,C4N2,N#CC#CC#N,closed-shell,0.1787,11.972,1.612,4.87,0.0,76.058,low predicted line-confusion/blend risk; low molecular weight,Titan's atmosphere (Samuelson et al. 1997),none,not observable by rotational spectroscopy
+46,C2H5-,571,C2H5-,[CH2-]C,ion,0.1749,13.075,2.206,2.32,4.565,29.062,low predicted line-confusion/blend risk; low molecular weight,-,none,
+47,CH3CHCHCCH,694;695;696,C5H6,C#C/C=C\C;C#CC=CC;C#C/C=C/C,closed-shell,0.1746,13.155,2.111,4.2,1.053,66.103,low predicted line-confusion/blend risk; high predicted column density,-,none,
+48,CH3CHCCH2,429,C4H6,C=C=CC,closed-shell,0.1744,13.197,1.907,3.07,0.51,54.092,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 054525,
+49,C2H2N+,404,C2H2N+,[CH2+]C#N,ion,0.1737,11.584,1.309,0.46,5.4,40.045,low predicted line-confusion/blend risk; low molecular weight,-,none,
+50,C3H5N,499,C3H5N,CC#CN,closed-shell,0.1736,12.35,1.803,2.96,1.432,55.08,low predicted line-confusion/blend risk; low molecular weight,-,none,
+51,l-C3H3+,383,C3H3+,[C+]#CC,ion,0.1735,12.957,1.537,2.39,1.7,39.057,low predicted line-confusion/blend risk; low molecular weight,-,none,
+52,C6H8,1210,C6H8,CC#CC=CC,closed-shell,0.1723,13.001,2.334,6.48,0.3,80.13,low predicted line-confusion/blend risk; high similarity to known TMC-1 species,-,none,
+53,C2H4,438,C2H4,C=C,closed-shell,0.1711,11.766,1.684,2.53,0.0,28.054,low predicted line-confusion/blend risk; low molecular weight,IRC+10216 (Betz 1981),none,not observable by rotational spectroscopy
+54,CH3CCCHCH2,644,C5H6,C=CC#CC,closed-shell,0.168,11.935,1.764,4.33,0.608,66.103,low predicted line-confusion/blend risk; low molecular weight,-,none,
+55,CH3NH,1269,CH4N,C[NH],radical,0.1678,13.812,1.896,1.88,2.343,30.05,low predicted line-confusion/blend risk; low molecular weight,-,none,uncommon isomer
+56,CH2CCHCHO,482,C4H4O,C=C=CC=O,closed-shell,0.1623,11.36,2.445,5.26,3.932,68.075,low predicted line-confusion/blend risk; low molecular weight,-,none,
+57,CH4Si,465,CH4Si,C=[SiH2],closed-shell,0.1611,11.953,1.387,1.38,0.8,44.129,low predicted line-confusion/blend risk; low molecular weight,-,none,
+58,SiH4,308,H4Si,[SiH4],closed-shell,0.1585,12.69,1.415,0.55,0.0,32.118,low predicted line-confusion/blend risk; low molecular weight,IRC+10216 (Goldhaber & Betz 1984),none,not observable by rotational spectroscopy
+59,C3H5P,258,C3H5P,CC#CP,closed-shell,0.1582,12.679,1.776,3.17,1.476,72.047,low predicted line-confusion/blend risk; high predicted column density,-,none,
+60,HNN,282,HN2,[N]=N,radical,0.1574,13.449,1.793,1.77,2.121,29.022,low predicted line-confusion/blend risk; low molecular weight,-,none,
+61,C4HO+,619,C4HO+,C#C[C+]=C=O,ion,0.1571,12.084,1.72,3.04,4.8,65.051,low predicted line-confusion/blend risk; low molecular weight,-,none,
+62,HSiS+,277,HSSi+,[SiH]#[S+],ion,0.1569,12.959,1.343,1.14,3.821,61.161,low predicted line-confusion/blend risk; low molecular weight,-,none,
+63,C4HS+,621,C4HS+,C#C[C+]=C=S,ion,0.1563,14.673,2.055,3.35,3.6,81.119,low predicted line-confusion/blend risk; high predicted column density,-,none,
+64,C2H6Si,473,C2H6Si,C=[SiH]C,closed-shell,0.1554,12.352,1.538,1.61,1.703,58.156,low predicted line-confusion/blend risk; low molecular weight,-,none,
+65,C2H3P,485,C2H3P,C#CP,closed-shell,0.1532,13.021,1.695,2.07,0.825,58.02,low predicted line-confusion/blend risk; low molecular weight,-,none,
+66,H3O+,300,H3O+,[OH3+],ion,0.1531,12.593,1.454,0.89,1.8,19.023,low predicted line-confusion/blend risk; low molecular weight,"Orion-KL/OMC-1, Sgr B2 (Wootten et al. 1986)",CDMS 019503,
+67,HOCS+,530,CHOS+,O[C+]=S,ion,0.1523,13.857,1.765,2.56,2.617,61.085,low predicted line-confusion/blend risk; high predicted column density,G+0.693-0.027 (Sanz-Novo et al. 2024),CDMS 061510,
+68,C6H6,44,C6H6,CC#CC#CC,closed-shell,0.1522,12.794,1.749,4.19,0.0,78.114,low predicted line-confusion/blend risk; high predicted column density,-,none,uncommon isomer; not observable by rotational spectroscopy
+69,C4H5+,392,C4H5+,C=C=[C+]C,ion,0.151,13.18,1.538,2.88,1.217,53.084,low predicted line-confusion/blend risk; low molecular weight,-,none,
+70,CH3SH,328,CH4S,CS,closed-shell,0.1507,13.839,2.138,1.64,1.803,48.11,low predicted line-confusion/blend risk; high predicted column density,"Sgr B2(OH), G327.3-0.6, IRAS16293-2422, Sgr B2(N) (Linke et al. 1979)",CDMS 048510,
+71,HSiO+,403,HOSi+,[O+]#[SiH],ion,0.1497,11.711,1.607,1.32,5.401,45.093,FLAG: SMILES does not match the given formula/name label; low predicted line-confusion/blend risk; low molecular weight,-,none,name corrected
+72,C3HNO,723,C3HNO,N#CC=C=O,closed-shell,0.1496,10.415,1.876,3.93,3.701,67.047,low predicted line-confusion/blend risk; low molecular weight,-,none,
+73,H2N-NH,1270,H3N2,[NH]N,radical,0.1496,13.555,2.05,2.08,2.893,31.038,low predicted line-confusion/blend risk; low molecular weight,-,none,
+74,CH2NH2+,284,CH4N+,[CH2+]N,ion,0.1467,12.719,1.633,1.57,2.343,30.05,low predicted line-confusion/blend risk; low molecular weight,-,none,
+75,C4HN+,627,C4HN+,C#C[C+]=C=[N],ion,0.1463,13.16,1.832,3.22,6.3,63.059,low predicted line-confusion/blend risk; large dipole moment,-,none,
+76,CH3OCN,537,C2H3NO,COC#N,closed-shell,0.1462,12.911,2.647,2.95,4.738,57.052,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 057511,uncommon isomer
+77,H2O2Si,311,H2O2Si,O=[SiH]O,closed-shell,0.1462,11.809,1.529,1.46,2.759,62.1,low predicted line-confusion/blend risk; low molecular weight,-,none,
+78,H3S+,295,H3S+,[SH3+],ion,0.1449,12.869,1.521,1.4,2.1,35.091,low predicted line-confusion/blend risk; low molecular weight,-,none,
+79,C2H+,501,C2H+,[C+]#C,ion,0.1447,13.028,1.263,0.64,0.7,25.03,low predicted line-confusion/blend risk; low molecular weight,-,none,
+80,HCS,517,CHS,[CH]=S,radical,0.1443,14.051,1.546,1.49,1.2,45.086,low predicted line-confusion/blend risk; high predicted column density,L483 (Agundez et al. 2018),CDMS 045507,
+81,H2POH,313,H3OP,OP,closed-shell,0.1439,12.532,1.628,1.67,0.854,49.997,low predicted line-confusion/blend risk; low molecular weight,-,none,
+82,CH3CO,516,C2H3O,C[C]=O,radical,0.1432,11.894,1.524,2.47,2.707,43.045,low predicted line-confusion/blend risk; low molecular weight,-,none,
+83,NH2 / NHD,561;1345,H2N,[2H][NH];[NH2],radical,0.1425,13.037,1.751,0.995,2.2,16.526,low predicted line-confusion/blend risk; low molecular weight,Sgr B2 (van Dishoeck et al. 1993),none,
+84,C2H3S+,397,C2H3S+,CC#[S+],ion,0.1396,13.068,1.474,2.33,2.0,59.113,low predicted line-confusion/blend risk; low molecular weight,-,none,
+85,C7N,192,C7N,[C]#CC#CC#CC#N,radical,0.1376,11.963,1.566,4.52,4.2,98.084,low predicted line-confusion/blend risk; large dipole moment,-,none,
+86,H3PO2,310,H3O2P,O=[PH2]O,closed-shell,0.1369,11.901,1.549,1.46,2.78,65.996,low predicted line-confusion/blend risk; low molecular weight,-,none,
+87,l-C6,834,C6,[C+]#CC#CC#[C-],closed-shell,0.136,11.381,1.706,4.83,0.0,72.066,low predicted line-confusion/blend risk; low molecular weight,-,none,not observable by rotational spectroscopy
+88,H2NSi+,1268,H2NSi+,N=[SiH+],ion,0.135,13.527,1.815,1.67,2.8,44.109,low predicted line-confusion/blend risk; low molecular weight,-,none,
+89,C4H+,119,C4H+,[C+]#CC#C,ion,0.1341,12.458,1.567,2.02,2.9,49.052,low predicted line-confusion/blend risk; low molecular weight,-,none,
+90,CH3O,330,CH3O,C[O],radical,0.1326,12.467,1.567,1.49,2.209,31.034,low predicted line-confusion/blend risk; low molecular weight,B1-b (Cernicharo et al. 2012),none,
+91,O2,598,O2,O=O,closed-shell,0.1301,11.969,1.614,1.49,0.0,31.998,low predicted line-confusion/blend risk; low molecular weight,"rho Ophiuchi, Orion (Larsson et al. 2007)",JPL 32001,
+92,NH2OH,323,H3NO,NO,closed-shell,0.1293,12.19,1.887,1.86,0.707,33.03,low predicted line-confusion/blend risk; low molecular weight,G+0.693-0.027 (Rivilla et al. 2020),CDMS 033503,
+93,S2,603,S2,S=S,closed-shell,0.1293,14.921,1.928,1.42,0.0,64.134,low predicted line-confusion/blend risk; high predicted column density,Comet IRAS-Araki-Alcock (A'Hearn et al. 1983),none,not observable by rotational spectroscopy
+94,C5H3N+,216,C5H3N+,CC#C[C+]=C=[N],ion,0.129,12.608,1.84,3.98,6.703,77.086,low predicted line-confusion/blend risk; large dipole moment,-,none,
+95,CH2=CH+,452,C2H3+,[CH+]=C,ion,0.1277,12.466,1.404,1.66,0.5,27.046,low predicted line-confusion/blend risk; low molecular weight,-,none,
+96,CHCHCCCN,195,C5H2N,[CH]=CC#CC#N,radical,0.1258,11.76,1.636,3.37,4.4,76.078,FLAG: does not match a known/named isomer of this formula; low predicted line-confusion/blend risk; large dipole moment,-,none,uncommon isomer
+97,CH3CNH+,412,C2H4N+,C[C+]=N,ion,0.1241,14.312,2.004,2.6,0.8,42.061,FLAG: does not match a known/named isomer of this formula; low predicted line-confusion/blend risk; high predicted column density,-,none,uncommon isomer
+98,C9H4,56,C9H4,C#CC#CC#CC#CC,closed-shell,0.124,12.153,1.567,4.19,1.9,112.131,low predicted line-confusion/blend risk; high predicted column density,-,none,
+99,HC4CHO,94,C5H2O,C#CC#CC=O,closed-shell,0.1236,10.764,1.96,4.11,3.499,78.07,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 078505,
+100,c-C3H3+,345,C3H3+,c1c[cH+]1,ion,0.1226,12.739,1.589,2.51,0.7,39.057,low predicted line-confusion/blend risk; low molecular weight,-,none,not observable by rotational spectroscopy
+102,NH,1327,HN,[NH],radical,0.1182,12.584,1.455,0.0,1.8,15.015,low predicted line-confusion/blend risk; low molecular weight,-,CDMS 015501,
+107,HO2,312,HO2,[O]O,radical,0.1153,11.9,1.519,1.48,2.408,33.006,low predicted line-confusion/blend risk; low molecular weight,rho Ophiuchi A (Parise et al. 2012),JPL 33001,

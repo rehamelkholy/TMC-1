@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the paper and the archived release."
+title: "TMC-1: ranking unseen interstellar-molecule candidates with a frozen model (code and data)"
+type: software
+version: "(to be added)"
+date-released: "(to be added)"
+doi: "(to be added)"
+repository-code: "(to be added)"
+license: MIT
+authors:
+  - family-names: "(to be added)"
+    given-names: "(to be added)"
+    orcid: "(to be added)"
+preferred-citation:
+  type: article
+  title: "(to be added)"
+  authors:
+    - family-names: "(to be added)"
+      given-names: "(to be added)"
+      orcid: "(to be added)"
+  journal: "(to be added)"
+  year: "(to be added)"
+references:
+  - type: article
+    title: "Machine Learning of Interstellar Chemical Inventories"
+    authors:
+      - family-names: "Lee"
+        given-names: "Kin Long Kelvin"
+      - family-names: "Patterson"
+        given-names: "Jacqueline"
+      - family-names: "Burkhardt"
+        given-names: "Andrew M."
+      - family-names: "Vankayalapati"
+        given-names: "Vivek"
+      - family-names: "McCarthy"
+        given-names: "Michael C."
+      - family-names: "McGuire"
+        given-names: "Brett A."
+    journal: "The Astrophysical Journal Letters"
+    volume: 917
+    issue: 1
+    start: "L6"
+    year: 2021
+    doi: "10.3847/2041-8213/ac194b"
+    notes: "Recommendation list: Zenodo version 2, 10.5281/zenodo.5146276 (CC BY 4.0). Code (umda): https://github.com/laserkelvin/umda (MIT)."

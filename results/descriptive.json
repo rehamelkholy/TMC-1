@@ -1,0 +1,122 @@
+{
+ "coef": {
+  "2022-01-01": {
+   "charged": -0.5647,
+   "dist": 0.4274,
+   "logcd": 0.7007,
+   "mu": 0.4024,
+   "mw": -0.7899,
+   "n_iter": 13,
+   "n_pos": 34,
+   "radical": -0.2214,
+   "sigma": -2.2094
+  },
+  "2023-01-01": {
+   "charged": -0.4036,
+   "dist": 0.6772,
+   "logcd": 0.5759,
+   "mu": 0.5042,
+   "mw": -0.9042,
+   "n_iter": 12,
+   "n_pos": 44,
+   "radical": -0.2369,
+   "sigma": -2.1748
+  },
+  "2024-01-01": {
+   "charged": -0.3826,
+   "dist": 0.7248,
+   "logcd": 0.4692,
+   "mu": 0.5878,
+   "mw": -1.0428,
+   "n_iter": 14,
+   "n_pos": 50,
+   "radical": -0.3111,
+   "sigma": -2.1395
+  },
+  "2025-01-01": {
+   "charged": -0.3863,
+   "dist": 0.8525,
+   "logcd": 0.5258,
+   "mu": 0.6063,
+   "mw": -1.0242,
+   "n_iter": 12,
+   "n_pos": 59,
+   "radical": -0.229,
+   "sigma": -2.2758
+  },
+  "final": {
+   "charged": -0.4349,
+   "dist": 0.7354,
+   "logcd": 0.7473,
+   "mu": 0.6267,
+   "mw": -0.9136,
+   "n_iter": 13,
+   "n_pos": 63,
+   "radical": -0.2199,
+   "sigma": -2.1553
+  }
+ },
+ "desc": {
+  "dist": {
+   "med_known": 2.735,
+   "med_never": 4.77,
+   "med_test": 3.69,
+   "median_pct_test_in_never": 28.67,
+   "mwu_p_test_never": 0.00186
+  },
+  "logcd": {
+   "med_known": 12.4393,
+   "med_never": 11.39,
+   "med_test": 12.289,
+   "median_pct_test_in_never": 69.29,
+   "mwu_p_test_never": 0.00626
+  },
+  "mu": {
+   "med_known": 2.1624,
+   "med_never": 2.3431,
+   "med_test": 3.8,
+   "median_pct_test_in_never": 69.58,
+   "mwu_p_test_never": 0.0493
+  },
+  "mw": {
+   "med_known": 56.5805,
+   "med_never": 96.129,
+   "med_test": 65.142,
+   "median_pct_test_in_never": 23.56,
+   "mwu_p_test_never": 9.48e-06
+  },
+  "sigma": {
+   "med_known": 1.6435,
+   "med_never": 3.699,
+   "med_test": 2.077,
+   "median_pct_test_in_never": 21.23,
+   "mwu_p_test_never": 7.3e-08
+  }
+ },
+ "n": [
+  34,
+  29,
+  1371
+ ],
+ "share": {
+  "charged": [
+   0.2059,
+   0.3448,
+   0.159
+  ],
+  "radical": [
+   0.2647,
+   0.2414,
+   0.1459
+  ]
+ },
+ "sigma_counts": {
+  "test_bottom25pct": 22,
+  "test_top10pct": 0
+ },
+ "spearman": {
+  "dist": 0.7406,
+  "logcd": -0.3284,
+  "mw": 0.6876
+ }
+}

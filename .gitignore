@@ -1,0 +1,31 @@
+# Internal-tracking material (never part of the release)
+project_log*
+*_log_entry.md
+*_summary.md
+*task*.md
+CLAUDE.md
+.claude/
+notes/
+scratch/
+prompts/
+
+# Third-party inputs and intermediate files produced by the scripts
+external/
+build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+env311/
+*.egg-info/
+.ipynb_checkpoints/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

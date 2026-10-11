@@ -1,0 +1,1214 @@
+{
+  "task": "F7e (Amendment 8, N1 diagnostic)",
+  "generated": "2026-09-24 13:44:21",
+  "elapsed_seconds": 67.1,
+  "protocol_files": {
+    "protocol_v1.md": "13aa3cdd6002f7bdba97efe0c4a0417ce433d2ead917e63867e0638b5ed41c7f",
+    "protocol_v1_amendments.md": "cb7005a7a8de9b356cad1c20a39cbe081ce9822944ed019c6f99b82a0d1e9d84",
+    "protocol_v1_amendments_2.md": "1518a6275e367b191b52f0dd4e07433b943ba1180200c3270746fff4b3eca908",
+    "protocol_v1_amendments_3.md": "6fe3d5781d6824977fb3f7c141abd710a905e49b49ba43ae2d7c40cedecaaec1",
+    "protocol_v1_amendments_4.md": "53588c76425df425d9a2160000b64c2bf95223c079fd11ceccb439c7618374ba",
+    "protocol_v1_amendments_5.md": "4d26a4338c106ebbbe818bf89f57c145e9082b82633cd5978cc683935e303dc9",
+    "protocol_v1_amendments_6.md": "b3f2b0334490f6345981c52929dbfa2af554e3b657862466c2c3f44c056bc439",
+    "protocol_v1_amendments_7.md": "2812e9a514a1c0338c6e348ed38eb47dc02d205664d98ea10ce51b74d6a44e6e",
+    "protocol_v1_amendments_8.md": "50bbe3d92722645f484c8fae479ad02536ebefd386f5a3915b35aff1b1adebfd"
+  },
+  "run_config": {
+    "base_seed": 20260921,
+    "n_tiebreak_trials": 200,
+    "n_bootstrap": 2000,
+    "bootstrap_seed": 20260921,
+    "topk_list": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "origins": [
+      "2022-01-01",
+      "2023-01-01",
+      "2024-01-01",
+      "2025-01-01"
+    ]
+  },
+  "implementation_notes": [
+    "F7e = Amendment 8's N1 post hoc diagnostic: the SAME evaluation code as F6/F7 (step4_engine.py, step5_bootstrap.py, j2_shift.py, all unmodified), run on features held FIXED at the G1 anchors-only refit (87 anchors via table_a2_authoritative_v2.csv's embedding_smiles per Amendment 6/L1, 643 shipped load_precutoff_training_set() observations, NO post-2021 detections added) at all 4 origins. Purpose: isolate the effect of replacing Lee's released Table-A2 values with this project's own refit from the effect of updating K3/K4 with new post-2021 detections as the origin advances (F7's own effect) -- this file holds the refit fixed and lets ONLY the origin (via known_before_origin/ test_pool/test_positive splits in step4_engine.py) vary.",
+    "features_refit_2021.csv (f7e_implementation/step2_build_refit2021_features.py) = the SAME per-raw-entry dist/logcd/sigma values validated by gate G1 (task F7b), J1-collapsed into the F6/F7 candidate skeleton (build_candidates_purged(), unmodified) exactly as F7 did, then replicated identically across all 4 origin rows (no origin-varying K3/K4 here, by design).",
+    "Step 2 check (features_refit_2021.csv's underlying fit vs the sealed G1 gate, gate_report_v2.json): True -- LML/kernel_ match the sealed G1 gate to 0.0 (bit-identical, same code path/inputs/random_state), and the fit reproduces identically across two independent calls within this task (also bit-identical). Full check_report in step2_g1_features_check.json.",
+    "N2 (regressors.pkl's fitted kernel_ vs its own initial kernel, and optimizer settings) is reported separately in the conversation reply and in the dated log entry, not in this sealed file -- it is a static fact about the distributed pickle, not a per-origin evaluation result.",
+    "step4_engine.py's run_origin_evaluation(cand, Xs, sensitivity) evaluates all 4 ORIGINS against ONE fixed feature snapshot; here that snapshot IS the same at all 4 origins by construction, so calling it once per origin and keeping only that origin's own entry (same per-origin-extraction pattern as F7's own step3_seal_results_f7.py, kept for exact structural consistency with F6/F7/F7d's sealed outputs even though it is not strictly required when the features do not vary by origin) reproduces exactly what a single un-split call would give for known_before_origin/test_pool/test_positive at each of the 4 origin boundaries.",
+    "No pass/fail verdicts are computed in this file -- point estimates, pooled sums and bootstrap intervals only, matching F4a/F4c/F6/F7's convention. Per Amendment 8's M3 (N3): this is a post hoc diagnostic, labelled as such, never used to replace F7's pre-registered result."
+  ],
+  "step2_g1_features_check": {
+    "description": "features_refit_2021.csv's underlying fit vs itself (determinism) and vs the sealed G1 gate (gate_report_v2.json, Task F7b)",
+    "run1_lml": -632.152288287601,
+    "run2_lml": -632.152288287601,
+    "gate_report_v2_lml": -632.152288287601,
+    "run1_kernel_": "RationalQuadratic(alpha=8.94e+03, length_scale=1.97) + DotProduct(sigma_0=5.28) + WhiteKernel(noise_level=0.262)",
+    "run2_kernel_": "RationalQuadratic(alpha=8.94e+03, length_scale=1.97) + DotProduct(sigma_0=5.28) + WhiteKernel(noise_level=0.262)",
+    "gate_report_v2_kernel_": "RationalQuadratic(alpha=8.94e+03, length_scale=1.97) + DotProduct(sigma_0=5.28) + WhiteKernel(noise_level=0.262)",
+    "self_consistency_max_abs_diff_mean": 0.0,
+    "self_consistency_max_abs_diff_sigma": 0.0,
+    "self_consistency_max_abs_diff_dist": 0.0,
+    "self_consistency_kernel_identical": true,
+    "self_consistency_passed": true,
+    "vs_gate_report_v2_abs_lml_diff": 0.0,
+    "vs_gate_report_v2_kernel_matches": true,
+    "vs_gate_report_v2_passed": true,
+    "tolerance": 1e-09,
+    "check_passed": true
+  },
+  "primary": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.7850019630938359,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 3.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.621044365920691,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7367883784844915,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6542599136238713,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24782096584216726,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.454024342363565,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4875932469572045,
+            "topk": {
+              "25": 0.15,
+              "50": 0.26,
+              "100": 0.645,
+              "200": 1.215
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.8768794326241134,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5720567375886525,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7042553191489361,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6459574468085106,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.25886524822695034,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.40297872340425533,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5102156028368795,
+            "topk": {
+              "25": 0.115,
+              "50": 0.22,
+              "100": 0.395,
+              "200": 0.71
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.8940798858773181,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 3.0,
+              "200": 7.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.7384094151212554,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7140691868758916,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 3.0,
+              "200": 4.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6066333808844508,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.20390513552068473,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.5609843081312411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.4831847360912981,
+            "topk": {
+              "25": 0.1,
+              "50": 0.21,
+              "100": 0.465,
+              "200": 1.09
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 2,
+        "methods": {
+          "combined": {
+            "auc": 0.8307142857142857,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.9282142857142857,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.9635714285714286,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7725,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.3107142857142857,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.9182142857142858,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "random": {
+            "auc": 0.4936642857142857,
+            "topk": {
+              "25": 0.03,
+              "50": 0.06,
+              "100": 0.115,
+              "200": 0.265
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8443117703921753,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 8.0,
+          "200": 16.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.6755577864011707,
+        "topk": {
+          "25": 2.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 7.0
+        }
+      },
+      "detectability": {
+        "auc": 0.7413361814272955,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 7.0,
+          "200": 9.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6465080626555417,
+        "topk": {
+          "25": 0.0,
+          "50": 1.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "random": {
+        "auc": 0.4913426540399248,
+        "topk": {
+          "25": 0.395,
+          "50": 0.75,
+          "100": 1.62,
+          "200": 3.2800000000000002
+        }
+      },
+      "high_sigma": {
+        "auc": 0.2407243578878461,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.5177256556154942,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 2.0,
+          "200": 3.0
+        }
+      }
+    },
+    "best_gating_baseline": "detectability",
+    "bootstrap_combined_vs_best_baseline": {
+      "n_boot": 2000,
+      "seed": 20260921,
+      "auc_diff_ci95": [
+        0.02155084518210278,
+        0.19666019893224634
+      ],
+      "top100_diff_ci95": [
+        -4.0,
+        7.0
+      ],
+      "auc_diff_mean": 0.10366139342978027,
+      "top100_diff_mean": 1.364
+    }
+  },
+  "sensitivity_A4a_non_arxiv_dates_dropped": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.7850019630938359,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 3.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.621044365920691,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7367883784844915,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6542599136238713,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24782096584216726,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.454024342363565,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5161892422457793,
+            "topk": {
+              "25": 0.195,
+              "50": 0.295,
+              "100": 0.645,
+              "200": 1.395
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.8768794326241134,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5720567375886525,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7042553191489361,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6459574468085106,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.25886524822695034,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.40297872340425533,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5017283687943263,
+            "topk": {
+              "25": 0.09,
+              "50": 0.175,
+              "100": 0.34,
+              "200": 0.73
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.8940798858773181,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 3.0,
+              "200": 7.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.7384094151212554,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7140691868758916,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 3.0,
+              "200": 4.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6066333808844508,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.20390513552068473,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.5609843081312411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.5187985912981454,
+            "topk": {
+              "25": 0.16,
+              "50": 0.295,
+              "100": 0.64,
+              "200": 1.175
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.9250535331905781,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.987152034261242,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.9900071377587437,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8443968593861527,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.2276945039257673,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.9428979300499644,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.4734439685938615,
+            "topk": {
+              "25": 0.02,
+              "50": 0.04,
+              "100": 0.08,
+              "200": 0.12
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8490046717901832,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 8.0,
+          "200": 16.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.6671352320200333,
+        "topk": {
+          "25": 2.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 6.0
+        }
+      },
+      "detectability": {
+        "auc": 0.7328231580378687,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 6.0,
+          "200": 8.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6441561027443111,
+        "topk": {
+          "25": 0.0,
+          "50": 1.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "random": {
+        "auc": 0.5120946836157682,
+        "topk": {
+          "25": 0.4650000000000001,
+          "50": 0.8049999999999999,
+          "100": 1.705,
+          "200": 3.42
+        }
+      },
+      "high_sigma": {
+        "auc": 0.23407176181763054,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.5013863084084024,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 2.0,
+          "200": 2.0
+        }
+      }
+    },
+    "best_gating_baseline": "detectability"
+  },
+  "sensitivity_A4b_60day_boundary_flip": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 19,
+        "test_pool_size": 1421,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.8402335456475585,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 2.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5713021939136589,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.710898796886058,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.5449398443029015,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.3060863411181882,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.44125973106864824,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5077658351026186,
+            "topk": {
+              "25": 0.11,
+              "50": 0.27,
+              "100": 0.57,
+              "200": 1.155
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 27,
+        "test_pool_size": 1413,
+        "test_positives": 4,
+        "methods": {
+          "combined": {
+            "auc": 0.8781050390347764,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.6866572036905607,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7665010645848119,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7608232789212207,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.2175301632363378,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.5209368346344926,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.4966900283889283,
+            "topk": {
+              "25": 0.07,
+              "50": 0.13,
+              "100": 0.305,
+              "200": 0.585
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 31,
+        "test_pool_size": 1409,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.8911491791577445,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 7.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.7392933618843682,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7137758743754462,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 3.0,
+              "200": 4.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6049250535331906,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.2041399000713776,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.5619200571020699,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.5003800856531049,
+            "topk": {
+              "25": 0.145,
+              "50": 0.28,
+              "100": 0.525,
+              "200": 1.085
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 39,
+        "test_pool_size": 1401,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.7571428571428571,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.8692857142857142,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.9371428571428572,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7007142857142857,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.39357142857142857,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.8935714285714286,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "random": {
+            "auc": 0.4933464285714285,
+            "topk": {
+              "25": 0.01,
+              "50": 0.04,
+              "100": 0.075,
+              "200": 0.17
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8628868957963993,
+        "topk": {
+          "25": 2.0,
+          "50": 5.0,
+          "100": 6.0,
+          "200": 14.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.6714609035920083,
+        "topk": {
+          "25": 2.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 6.0
+        }
+      },
+      "detectability": {
+        "auc": 0.7333592612178161,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 7.0,
+          "200": 8.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6163298373375193,
+        "topk": {
+          "25": 0.0,
+          "50": 1.0,
+          "100": 1.0,
+          "200": 2.0
+        }
+      },
+      "random": {
+        "auc": 0.5021559003891871,
+        "topk": {
+          "25": 0.33499999999999996,
+          "50": 0.7200000000000001,
+          "100": 1.4749999999999999,
+          "200": 2.995
+        }
+      },
+      "high_sigma": {
+        "auc": 0.2545477148111098,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.5239408129750069,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 2.0,
+          "200": 3.0
+        }
+      }
+    },
+    "best_gating_baseline": "detectability",
+    "j2_shift_log": [
+      {
+        "candidate_id": 29,
+        "formulas": "C7H2N+",
+        "orig_date": "2022-03-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 184,
+        "formulas": "C4HN2+",
+        "orig_date": "2022-12-13",
+        "origin": "2023-01-01",
+        "new_date": "2023-01-02"
+      },
+      {
+        "candidate_id": 386,
+        "formulas": "CHNS",
+        "orig_date": "2024-01-01",
+        "origin": "2024-01-01",
+        "new_date": "2023-12-31"
+      },
+      {
+        "candidate_id": 468,
+        "formulas": "C3H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 558,
+        "formulas": "C2H4S",
+        "orig_date": "2025-01-01",
+        "origin": "2025-01-01",
+        "new_date": "2024-12-31"
+      },
+      {
+        "candidate_id": 660,
+        "formulas": "C5H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 688,
+        "formulas": "C3H4O",
+        "orig_date": "2023-02-17",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 707,
+        "formulas": "C5H5N",
+        "orig_date": "2023-03-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 823,
+        "formulas": "C10H-",
+        "orig_date": "2023-01-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      }
+    ]
+  }
+}

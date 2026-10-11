@@ -1,0 +1,38 @@
+formula,smiles,class,canon_A,canon_B_nostereo,inchi,n_heavy,verdict
+CH3OCH3,COC,closed_shell,COC,COC,InChI=1S/C2H6O/c1-3-2/h1-2H3,3,A
+2-C9H7CN,N#CC1=Cc2ccccc2C1,closed_shell,N#CC1=Cc2ccccc2C1,N#CC1=Cc2ccccc2C1,"InChI=1S/C10H7N/c11-7-8-5-9-3-1-2-4-10(9)6-8/h1-5H,6H2",11,A
+CH2CCHC4H,C=C=CC#CC#C,closed_shell,C#CC#CC=C=C,C#CC#CC=C=C,"InChI=1S/C7H4/c1-3-5-7-6-4-2/h1,6H,2H2",7,not_found
+CH2CCHC3N,C=C=CC#CC#N,closed_shell,C=C=CC#CC#N,C=C=CC#CC#N,"InChI=1S/C6H3N/c1-2-3-4-5-6-7/h3H,1H2",7,not_found
+HCCCHCCC,C#CC=C=C=[C],radical,[C]=C=C=CC#C,[C]=C=C=CC#C,"InChI=1S/C6H2/c1-3-5-6-4-2/h1,5H",6,not_found
+HCCCCS,[CH]=C=C=C=S,radical,[CH]=C=C=C=S,[CH]=C=C=C=S,InChI=1S/C4HS/c1-2-3-4-5/h1H,5,not_found
+C7N-,[C-]#CC#CC#CC#N,ion,[C-]#CC#CC#CC#N,[C-]#CC#CC#CC#N,InChI=1S/C7N/c1-2-3-4-5-6-7-8/q-1,8,not_found
+C2H5OH,CCO,closed_shell,CCO,CCO,"InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3",3,A
+CH3COCH3,CC(=O)C,closed_shell,CC(C)=O,CC(C)=O,InChI=1S/C3H6O/c1-3(2)4/h1-2H3,4,A
+NCS,[S]C#N,radical,N#C[S],N#C[S],InChI=1S/CNS/c2-1-3,3,A
+HCCS,[CH]=C=S,radical,[CH]=C=S,[CH]=C=S,InChI=1S/C2HS/c1-2-3/h1H,3,not_found
+H2CCCS,C=C=C=S,closed_shell,C=C=C=S,C=C=C=S,InChI=1S/C3H2S/c1-2-3-4/h1H2,4,not_found
+c-C3HCCH,C#CC1=C=C1,closed_shell,C#CC1=C=C1,C#CC1=C=C1,"InChI=1S/C5H2/c1-2-5-3-4-5/h1,3H",5,not_found
+c-C5H6,C1C=CC=C1,closed_shell,C1=CCC=C1,C1=CCC=C1,"InChI=1S/C5H6/c1-2-4-5-3-1/h1-4H,5H2",5,A
+HCSCCH,C#CC=S,closed_shell,C#CC=S,C#CC=S,"InChI=1S/C3H2S/c1-2-3-4/h1,3H",4,not_found
+c-2-C5H5CCH,C#CC1=CCC=C1,closed_shell,C#CC1=CCC=C1,C#CC1=CCC=C1,"InChI=1S/C7H6/c1-2-7-5-3-4-6-7/h1,3,5-6H,4H2",7,not_found
+c-C5H,C1(C#C)=C=[C]1,radical,C#CC1=C=[C]1,C#CC1=C=[C]1,InChI=1S/C5H/c1-2-5-3-4-5/h1H,5,not_found
+C5N-,[C-]#CC#CC#N,ion,[C-]#CC#CC#N,[C-]#CC#CC#N,InChI=1S/C5N/c1-2-3-4-5-6/q-1,6,not_found
+H2CCCN,C=[C]C#N,radical,C=[C]C#N,C=[C]C#N,InChI=1S/C3H2N/c1-2-3-4/h1H2,4,not_found
+1-cyanoacenaphthylene,N#CC1=Cc2cccc3cccc1c23,closed_shell,N#CC1=Cc2cccc3cccc1c23,N#CC1=Cc2cccc3cccc1c23,InChI=1S/C13H7N/c14-8-11-7-10-5-1-3-9-4-2-6-12(11)13(9)10/h1-7H,14,A
+5-cyanoacenaphthylene,N#Cc1ccc2c3c(cccc13)C=C2,closed_shell,N#Cc1ccc2c3c(cccc13)C=C2,N#Cc1ccc2c3c(cccc13)C=C2,InChI=1S/C13H7N/c14-8-11-7-6-10-5-4-9-2-1-3-12(11)13(9)10/h1-7H,14,A
+3-cyanoacenaphthylene,N#Cc1ccc2cccc3c2c1C=C3,closed_shell,N#Cc1ccc2cccc3c2c1C=C3,N#Cc1ccc2cccc3c2c1C=C3,InChI=1S/C13H7N/c14-8-11-5-4-9-2-1-3-10-6-7-12(11)13(9)10/h1-7H,14,not_found
+4-cyanoacenaphthylene,N#Cc1cc2c3c(cccc3c1)C=C2,closed_shell,N#Cc1cc2c3c(cccc3c1)C=C2,N#Cc1cc2c3c(cccc3c1)C=C2,InChI=1S/C13H7N/c14-8-9-6-11-3-1-2-10-4-5-12(7-9)13(10)11/h1-7H,14,not_found
+1-cyanopyrene,N#Cc1ccc2ccc3cccc4ccc1c2c34,closed_shell,N#Cc1ccc2ccc3cccc4ccc1c2c34,N#Cc1ccc2ccc3cccc4ccc1c2c34,InChI=1S/C17H9N/c18-10-14-7-6-13-5-4-11-2-1-3-12-8-9-15(14)17(13)16(11)12/h1-9H,18,A
+2-cyanopyrene,N#Cc1cc2ccc3cccc4ccc(c1)c2c34,closed_shell,N#Cc1cc2ccc3cccc4ccc(c1)c2c34,N#Cc1cc2ccc3cccc4ccc(c1)c2c34,InChI=1S/C17H9N/c18-10-11-8-14-6-4-12-2-1-3-13-5-7-15(9-11)17(14)16(12)13/h1-9H,18,A
+4-cyanopyrene,N#Cc1cc2cccc3ccc4cccc1c4c32,closed_shell,N#Cc1cc2cccc3ccc4cccc1c4c32,N#Cc1cc2cccc3ccc4cccc1c4c32,InChI=1S/C17H9N/c18-10-14-9-13-5-1-3-11-7-8-12-4-2-6-15(14)17(12)16(11)13/h1-9H,18,not_found
+cyanocoronene (C24H11CN),N#Cc1cc2ccc3ccc4ccc5ccc6ccc1c1c6c5c4c3c21,closed_shell,N#Cc1cc2ccc3ccc4ccc5ccc6ccc1c1c6c5c4c3c21,N#Cc1cc2ccc3ccc4ccc5ccc6ccc1c1c6c5c4c3c21,InChI=1S/C25H11N/c26-12-18-11-17-8-7-15-4-2-13-1-3-14-5-6-16-9-10-19(18)25-23(16)21(14)20(13)22(15)24(17)25/h1-11H,26,not_found
+phenalene (c-C13H10),C1C2=CC=CC3=C2C(=CC=C3)C=C1,closed_shell,C1=Cc2cccc3cccc(c23)C1,C1=Cc2cccc3cccc(c23)C1,"InChI=1S/C13H10/c1-4-10-6-2-8-12-9-3-7-11(5-1)13(10)12/h1-8H,9H2",13,A
+1-cyano propargyl radical (HCCCHCN),C#C[CH]C#N,radical,C#C[CH]C#N,C#C[CH]C#N,"InChI=1S/C4H2N/c1-2-3-4-5/h1,3H",5,not_found
+HNC5,N=C=C=C=C=[C],radical,[C]=C=C=C=C=N,[C]=C=C=C=C=N,InChI=1S/C5HN/c1-2-3-4-5-6/h6H,6,not_found
+c-C3H2S,S=C1C=C1,closed_shell,S=c1cc1,S=c1cc1,InChI=1S/C3H2S/c4-3-1-2-3/h1-2H,4,not_found
+NC3S,N#CC#C[S],radical,N#CC#C[S],N#CC#C[S],InChI=1S/C3NS/c4-2-1-3-5,5,not_found
+HC3S,C#CC#[S],radical,C#CC#[S],C#CC#[S],InChI=1S/C3HS/c1-2-3-4/h1H,4,not_found
+NCCHCS,N#CC=C=S,closed_shell,N#CC=C=S,N#CC=C=S,InChI=1S/C3HNS/c4-2-1-3-5/h1H,5,not_found
+HSO,S[O],radical,[O]S,[O]S,InChI=1S/HOS/c1-2/h2H,2,A
+c-C11H8,C1=Cc2cccc3c2C1=CC3,closed_shell,C1=Cc2cccc3c2C1=CC3,C1=Cc2cccc3c2C1=CC3,"InChI=1S/C11H8/c1-2-8-4-6-10-7-5-9(3-1)11(8)10/h1-4,6-7H,5H2",11,not_found
+C6H5CCH,C#Cc1ccccc1,closed_shell,C#Cc1ccccc1,C#Cc1ccccc1,"InChI=1S/C8H6/c1-2-8-6-4-3-5-7-8/h1,3-7H",8,A

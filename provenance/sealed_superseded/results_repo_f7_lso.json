@@ -1,0 +1,2187 @@
+{
+  "task": "F7d (Amendment 7, M2 leave-self-out variant)",
+  "generated": "2026-09-24 13:55:12",
+  "elapsed_seconds": 59.5,
+  "protocol_files": {
+    "protocol_v1.md": "13aa3cdd6002f7bdba97efe0c4a0417ce433d2ead917e63867e0638b5ed41c7f",
+    "protocol_v1_amendments.md": "cb7005a7a8de9b356cad1c20a39cbe081ce9822944ed019c6f99b82a0d1e9d84",
+    "protocol_v1_amendments_2.md": "1518a6275e367b191b52f0dd4e07433b943ba1180200c3270746fff4b3eca908",
+    "protocol_v1_amendments_3.md": "6fe3d5781d6824977fb3f7c141abd710a905e49b49ba43ae2d7c40cedecaaec1",
+    "protocol_v1_amendments_4.md": "53588c76425df425d9a2160000b64c2bf95223c079fd11ceccb439c7618374ba",
+    "protocol_v1_amendments_5.md": "4d26a4338c106ebbbe818bf89f57c145e9082b82633cd5978cc683935e303dc9",
+    "protocol_v1_amendments_6.md": "b3f2b0334490f6345981c52929dbfa2af554e3b657862466c2c3f44c056bc439",
+    "protocol_v1_amendments_7.md": "2812e9a514a1c0338c6e348ed38eb47dc02d205664d98ea10ce51b74d6a44e6e"
+  },
+  "run_config": {
+    "base_seed": 20260921,
+    "n_tiebreak_trials": 200,
+    "n_bootstrap": 2000,
+    "bootstrap_seed": 20260921,
+    "topk_list": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "origins": [
+      "2022-01-01",
+      "2023-01-01",
+      "2024-01-01",
+      "2025-01-01"
+    ]
+  },
+  "implementation_notes": [
+    "F7d = Amendment 7's M2 leave-self-out (LSO) variant, fixing the M1 defect: every candidate known at origin o (positive & date<origin, primary/unshifted definition) was, in F7, itself a member of K3(o) and (if it supplied the formula's GPR training point) of the GPR training set -- so its own dist collapsed to 0 and its posterior sigma sat near its floor, values no genuinely-unknown test candidate could ever have. M2: for each such candidate, individually, its own raw-id contribution (all distance-anchor points AND, if applicable, its 9 synthetic training points) is removed from K3(o)/the GPR training set, the GPR is refit by maximum likelihood on the reduced set, and its own dist/logcd/sigma are recomputed against that reduced K3(o) -- one candidate at a time, so every OTHER known candidate's points (including their exact fixed noise draws) are left untouched in each such refit. Candidates NOT known at an origin are completely unchanged from F7's own features_recomputed.csv (verified, see below).",
+    "Every 'known positive' candidate maps, by construction, to >=1 raw id in a matched-detection record (step2_build_candidates.py: positive = any member matched to a post2021 detection via rules A/B/C) -- the 87 Lee Table A2 anchors were already purged out of the raw universe by F6's Rule A and so can never themselves be a 'known positive candidate'; LSO removal targets only a candidate's own raw-id points, never anchor points.",
+    "Step 1 check (candidates NOT known at each origin vs F7's features_recomputed.csv, tolerance 1e-9): True -- 5651 rows checked, max abs diff 1.776e-15 (machine precision). Full report: step1_not_known_check.json.",
+    "109 individual LOO refits performed across the 4 origins (16, 25, 30, 38 known candidates at origins 2022-01-01 through 2025-01-01 respectively) -- one independent GPR refit per known candidate, per origin. Full per-refit log (candidate_id, species_key, points removed, resulting training-set size, LML): loo_refit_log.json.",
+    "step4_engine.py's run_origin_evaluation(cand, Xs, sensitivity) evaluates all 4 ORIGINS against ONE fixed feature snapshot; F7d's features are origin-varying (like F7's), so it was called once per origin and only the matching origin's own result kept -- same per-origin-extraction pattern as F7's own step3_seal_results_f7.py. All evaluation logic itself (step4_engine.py, step5_bootstrap.py, j2_shift.py) is imported completely unmodified.",
+    "No pass/fail verdicts are computed in this file -- point estimates, pooled sums and bootstrap intervals only, matching F4a/F4c/F6/F7's convention. Per Amendment 7's M3, this is a post hoc correction to F7 (fixing a defect M1 identified after F7 was unsealed), labelled as such, and is never used to silently replace F7's pre-registered sealed result -- both sealed files stand on their own."
+  ],
+  "step1_not_known_check": {
+    "n_rows_checked": 5651,
+    "n_known_rows_excluded_from_check": 109,
+    "max_abs_diff_dist": 1.7763568394002505e-15,
+    "max_abs_diff_logcd": 1.7763568394002505e-15,
+    "max_abs_diff_sigma": 8.881784197001252e-16,
+    "max_abs_diff_overall": 1.7763568394002505e-15,
+    "tolerance": 1e-09,
+    "check_passed": true
+  },
+  "loo_refit_log": [
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 200,
+      "species_key": "C8H3N|C8H3N|c1-2-3-4-5-6-7-8-9|h1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -845.6088576375657
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 240,
+      "species_key": "C3N-|C3N|c1-2-3-4|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -846.004363789993
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 325,
+      "species_key": "C6H4|C6H4|c1-2-4-6-5-3-1|h1-4H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -845.4826712553498
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 374,
+      "species_key": "C2HS+|C2HS|c1-2-3|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -845.1420415207763
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 413,
+      "species_key": "C3H3|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -840.3790194506697
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 417,
+      "species_key": "C2H2S|C2H2S|c1-2-3|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -843.9099264021438
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 438,
+      "species_key": "C2H4O|C2H4O|c1-2-3|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -844.3595773439351
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 566,
+      "species_key": "C2H4O2|C2H4O2|c1-4-2-3|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -845.1445262163078
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 616,
+      "species_key": "C4H2N|C4H2N|c1-2-3-4-5|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -845.5412851427886
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 658,
+      "species_key": "C5H2|C5H2|c1-3-5-4-2|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -847.5767174087882
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 664,
+      "species_key": "C4S|C4S|c1-2-3-4-5|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -847.2115543157558
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 668,
+      "species_key": "C5S|C5S|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -846.0485188659638
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 690,
+      "species_key": "C2HNS|C2HNS|c3-1-2-4|h2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -841.5570185215287
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 796,
+      "species_key": "C5O|C5O|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -847.376395796002
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 891,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h1,3-5H,6H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -844.0141077877036
+    },
+    {
+      "origin": "2022-01-01",
+      "candidate_id": 1320,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 859,
+      "loo_lml": -846.7991431841684
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 29,
+      "species_key": "C7H2N+|C7HN|c1-2-3-4-5-6-7-8|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -969.6013625940379
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 184,
+      "species_key": "C4HN2+|C4N2|c5-3-1-2-4-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.0732669827172
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 200,
+      "species_key": "C8H3N|C8H3N|c1-2-3-4-5-6-7-8-9|h1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.8331740220921
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 240,
+      "species_key": "C3N-|C3N|c1-2-3-4|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -976.1778345491797
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 325,
+      "species_key": "C6H4|C6H4|c1-2-4-6-5-3-1|h1-4H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.2980149153755
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 374,
+      "species_key": "C2HS+|C2HS|c1-2-3|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.4741573271601
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 413,
+      "species_key": "C3H3|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -973.9394852099749
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 417,
+      "species_key": "C2H2S|C2H2S|c1-2-3|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -973.8572938431405
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 438,
+      "species_key": "C2H4O|C2H4O|c1-2-3|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -976.157793419678
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 468,
+      "species_key": "C3H+|C3H|c1-3-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -972.0047392348929
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 486,
+      "species_key": "C3H2N+|C3H2N|c1-3-4-2|h1-2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.5549759283676
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 566,
+      "species_key": "C2H4O2|C2H4O2|c1-4-2-3|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.257484405608
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 616,
+      "species_key": "C4H2N|C4H2N|c1-2-3-4-5|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.8906465015505
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 629,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2H,1,3H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -973.968986045707
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 641,
+      "species_key": "C4H5N|C4H5N|c1-4(2)3-5|h1H2,2H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.09935281092
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 658,
+      "species_key": "C5H2|C5H2|c1-3-5-4-2|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -972.7435776097927
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 660,
+      "species_key": "C5H+|C5H|c1-3-5-4-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.9777793907388
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 664,
+      "species_key": "C4S|C4S|c1-2-3-4-5|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -971.5697568774199
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 668,
+      "species_key": "C5S|C5S|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.2449295452025
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 690,
+      "species_key": "C2HNS|C2HNS|c3-1-2-4|h2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.4034078360257
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 691,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2-3H,1H3",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 18,
+      "loo_training_set_size": 994,
+      "loo_lml": -962.3693082708367
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 796,
+      "species_key": "C5O|C5O|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.8878394744347
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 891,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h1,3-5H,6H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -975.152497436054
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 1056,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h3-6H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -972.1146957622936
+    },
+    {
+      "origin": "2023-01-01",
+      "candidate_id": 1320,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1003,
+      "loo_lml": -974.4244967804809
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 29,
+      "species_key": "C7H2N+|C7HN|c1-2-3-4-5-6-7-8|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.0266752322354
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 184,
+      "species_key": "C4HN2+|C4N2|c5-3-1-2-4-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.4264056159827
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 200,
+      "species_key": "C8H3N|C8H3N|c1-2-3-4-5-6-7-8-9|h1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.3566740235078
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 240,
+      "species_key": "C3N-|C3N|c1-2-3-4|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.3587200291531
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 325,
+      "species_key": "C6H4|C6H4|c1-2-4-6-5-3-1|h1-4H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.4217948533524
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 374,
+      "species_key": "C2HS+|C2HS|c1-2-3|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.190587048716
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 413,
+      "species_key": "C3H3|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1058.6838752830163
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 417,
+      "species_key": "C2H2S|C2H2S|c1-2-3|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.135723631056
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 438,
+      "species_key": "C2H4O|C2H4O|c1-2-3|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1062.252013256455
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 468,
+      "species_key": "C3H+|C3H|c1-3-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1057.8928726099189
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 470,
+      "species_key": "C3H3+|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1062.3343004406336
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 486,
+      "species_key": "C3H2N+|C3H2N|c1-3-4-2|h1-2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.3249079009513
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 562,
+      "species_key": "C3H6O|C3H6O|c1-2-3-4|h3H,2H2,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1055.6197184187558
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 566,
+      "species_key": "C2H4O2|C2H4O2|c1-4-2-3|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.6616739901133
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 616,
+      "species_key": "C4H2N|C4H2N|c1-2-3-4-5|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.136441987742
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 629,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2H,1,3H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1056.6948013024883
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 641,
+      "species_key": "C4H5N|C4H5N|c1-4(2)3-5|h1H2,2H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.0724713525317
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 658,
+      "species_key": "C5H2|C5H2|c1-3-5-4-2|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1057.977882567976
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 660,
+      "species_key": "C5H+|C5H|c1-3-5-4-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.9452791954782
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 664,
+      "species_key": "C4S|C4S|c1-2-3-4-5|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1055.289905011139
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 668,
+      "species_key": "C5S|C5S|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1057.8659586615697
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 688,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1061.2861516801142
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 690,
+      "species_key": "C2HNS|C2HNS|c3-1-2-4|h2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.1787650140982
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 691,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2-3H,1H3",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 18,
+      "loo_training_set_size": 1084,
+      "loo_lml": -1051.344385752765
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 707,
+      "species_key": "C5H5N|C5H5N|c1-2-3-4-5-6|h2-4H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.270502747374
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 796,
+      "species_key": "C5O|C5O|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1061.1352207226028
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 823,
+      "species_key": "C10H-|C10H|c1-3-5-7-9-10-8-6-4-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.9786088167957
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 891,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h1,3-5H,6H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1060.0849331039299
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 1056,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h3-6H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1059.9062395795618
+    },
+    {
+      "origin": "2024-01-01",
+      "candidate_id": 1320,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1093,
+      "loo_lml": -1057.5366820291285
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 29,
+      "species_key": "C7H2N+|C7HN|c1-2-3-4-5-6-7-8|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.6131219989372
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 122,
+      "species_key": "C5H4|C5H4|c1-3-5-4-2|h1-2H,5H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1202.7318326216373
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 175,
+      "species_key": "C5HN+|C5HN|c1-2-3-4-5-6|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.2125282390507
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 181,
+      "species_key": "C7HN+|C7HN|c1-2-3-4-5-6-7-8|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.733279519703
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 184,
+      "species_key": "C4HN2+|C4N2|c5-3-1-2-4-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.4849474561966
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 200,
+      "species_key": "C8H3N|C8H3N|c1-2-3-4-5-6-7-8-9|h1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.4815963861902
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 228,
+      "species_key": "C3HN+|C3HN|c1-2-3-4|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 0,
+      "loo_training_set_size": 1246,
+      "loo_lml": -1211.6535843314273
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 240,
+      "species_key": "C3N-|C3N|c1-2-3-4|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.2512986785423
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 325,
+      "species_key": "C6H4|C6H4|c1-2-4-6-5-3-1|h1-4H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1206.4666405204748
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 374,
+      "species_key": "C2HS+|C2HS|c1-2-3|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.0046917259263
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 386,
+      "species_key": "CHNS|CHNS|c1-2-3|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.6527912202578
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 413,
+      "species_key": "C3H3|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1202.7236617559643
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 417,
+      "species_key": "C2H2S|C2H2S|c1-2-3|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.5505442706824
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 438,
+      "species_key": "C2H4O|C2H4O|c1-2-3|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1200.9229073217252
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 468,
+      "species_key": "C3H+|C3H|c1-3-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1197.4754217441769
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 470,
+      "species_key": "C3H3+|C3H3|c1-3-2|h1H,2H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1203.9220191004772
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 473,
+      "species_key": "C4H6|C4H6|c1-3-4-2|h1H,4H2,2H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.4211776635034
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 486,
+      "species_key": "C3H2N+|C3H2N|c1-3-4-2|h1-2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.7899742218985
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 562,
+      "species_key": "C3H6O|C3H6O|c1-2-3-4|h3H,2H2,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.0515628954727
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 566,
+      "species_key": "C2H4O2|C2H4O2|c1-4-2-3|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.800852092619
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 616,
+      "species_key": "C4H2N|C4H2N|c1-2-3-4-5|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1203.8768930699553
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 629,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2H,1,3H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1206.0758669979252
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 641,
+      "species_key": "C4H5N|C4H5N|c1-4(2)3-5|h1H2,2H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1202.0915680139165
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 658,
+      "species_key": "C5H2|C5H2|c1-3-5-4-2|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.8290229896465
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 660,
+      "species_key": "C5H+|C5H|c1-3-5-4-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1202.9651956264747
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 664,
+      "species_key": "C4S|C4S|c1-2-3-4-5|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1203.5264583934184
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 668,
+      "species_key": "C5S|C5S|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.4026448753275
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 688,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2H,1H3",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.8425936154526
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 690,
+      "species_key": "C2HNS|C2HNS|c3-1-2-4|h2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1202.5245760165926
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 691,
+      "species_key": "C4H5N|C4H5N|c1-2-3-4-5|h2-3H,1H3",
+      "n_removed_dist_points": 2,
+      "n_removed_train_points": 18,
+      "loo_training_set_size": 1228,
+      "loo_lml": -1192.3005760414248
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 707,
+      "species_key": "C5H5N|C5H5N|c1-2-3-4-5-6|h2-4H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.1827867862467
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 796,
+      "species_key": "C5O|C5O|c1-2-3-4-5-6|",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1201.18273135697
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 823,
+      "species_key": "C10H-|C10H|c1-3-5-7-9-10-8-6-4-2|h1H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1206.1658396396326
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 891,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h1,3-5H,6H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.3865912827428
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 1056,
+      "species_key": "C7H6|C7H6|c1-2-7-5-3-4-6-7|h3-6H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.041626981192
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 1130,
+      "species_key": "C3H2N2|C3H2N2|c4-2-1-3-5|h1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1204.9927533853843
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 1143,
+      "species_key": "C4H2N2|C4H2N2|c5-3-1-2-4-6|h1-2H",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1205.2925452270351
+    },
+    {
+      "origin": "2025-01-01",
+      "candidate_id": 1320,
+      "species_key": "C3H4O|C3H4O|c1-2-3-4|h2-3H,1H2",
+      "n_removed_dist_points": 1,
+      "n_removed_train_points": 9,
+      "loo_training_set_size": 1237,
+      "loo_lml": -1203.1475390170065
+    }
+  ],
+  "primary": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.7457400863761288,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 3.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5930113859442481,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7045151158225363,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6709069493521791,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.26493914409108754,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.46917942677659996,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.496627404789949,
+            "topk": {
+              "25": 0.16,
+              "50": 0.27,
+              "100": 0.625,
+              "200": 1.17
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.903404255319149,
+            "topk": {
+              "25": 2.0,
+              "50": 2.0,
+              "100": 4.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3483687943262411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5009929078014185,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7078014184397163,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24085106382978722,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.19234042553191485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5065127659574469,
+            "topk": {
+              "25": 0.085,
+              "50": 0.17,
+              "100": 0.39,
+              "200": 0.705
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.860021398002853,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.551444365192582,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.606722539229672,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6659236804564908,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.19133380884450785,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.36287446504992865,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5019235912981455,
+            "topk": {
+              "25": 0.175,
+              "50": 0.295,
+              "100": 0.61,
+              "200": 1.165
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 2,
+        "methods": {
+          "combined": {
+            "auc": 0.9564285714285715,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 2.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.48750000000000004,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5892857142857143,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8017857142857143,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.1925,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.29821428571428577,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.49731964285714286,
+            "topk": {
+              "25": 0.02,
+              "50": 0.065,
+              "100": 0.14,
+              "200": 0.285
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8342379325358696,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 11.0,
+          "200": 12.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5193958902779205,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 2.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6199146801591134,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6878387711913145,
+        "topk": {
+          "25": 0.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 5.0
+        }
+      },
+      "random": {
+        "auc": 0.5005099370415094,
+        "topk": {
+          "25": 0.44,
+          "50": 0.8,
+          "100": 1.7650000000000001,
+          "200": 3.325
+        }
+      },
+      "high_sigma": {
+        "auc": 0.2293490869468661,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.36182255251987394,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist",
+    "bootstrap_combined_vs_best_baseline": {
+      "n_boot": 2000,
+      "seed": 20260921,
+      "auc_diff_ci95": [
+        0.04724429880002205,
+        0.24612160143811174
+      ],
+      "top100_diff_ci95": [
+        4.0,
+        13.0
+      ],
+      "auc_diff_mean": 0.14618415775299629,
+      "top100_diff_mean": 8.537
+    }
+  },
+  "sensitivity_A4a_non_arxiv_dates_dropped": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 16,
+        "test_pool_size": 1424,
+        "test_positives": 9,
+        "methods": {
+          "combined": {
+            "auc": 0.7457400863761288,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 3.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5930113859442481,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "detectability": {
+            "auc": 0.7045151158225363,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6709069493521791,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.26493914409108754,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.46917942677659996,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5015382803297997,
+            "topk": {
+              "25": 0.12,
+              "50": 0.325,
+              "100": 0.585,
+              "200": 1.28
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 25,
+        "test_pool_size": 1415,
+        "test_positives": 5,
+        "methods": {
+          "combined": {
+            "auc": 0.903404255319149,
+            "topk": {
+              "25": 2.0,
+              "50": 2.0,
+              "100": 4.0,
+              "200": 4.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3483687943262411,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5009929078014185,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7078014184397163,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.24085106382978722,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.19234042553191485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4965184397163121,
+            "topk": {
+              "25": 0.085,
+              "50": 0.175,
+              "100": 0.36,
+              "200": 0.73
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 30,
+        "test_pool_size": 1410,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.860021398002853,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.551444365192582,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.606722539229672,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6659236804564908,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.19133380884450785,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.36287446504992865,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.496021754636234,
+            "topk": {
+              "25": 0.145,
+              "50": 0.295,
+              "100": 0.58,
+              "200": 1.135
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 38,
+        "test_pool_size": 1402,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.9643112062812277,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5974304068522485,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.662384011420414,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8351177730192719,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.1541755888650964,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.37473233404710926,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4590435403283369,
+            "topk": {
+              "25": 0.0,
+              "50": 0.01,
+              "100": 0.045,
+              "200": 0.095
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8292680193167372,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 10.0,
+          "200": 11.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5255622510227106,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 2.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6244245611594657,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 3.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.684333776219104,
+        "topk": {
+          "25": 0.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 5.0
+        }
+      },
+      "random": {
+        "auc": 0.49668062169425936,
+        "topk": {
+          "25": 0.35,
+          "50": 0.8049999999999999,
+          "100": 1.5699999999999998,
+          "200": 3.2399999999999998
+        }
+      },
+      "high_sigma": {
+        "auc": 0.22928494241695144,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.36791500100415275,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist"
+  },
+  "sensitivity_A4b_60day_boundary_flip": {
+    "per_origin": [
+      {
+        "origin": "2022-01-01",
+        "window_end": "2023-01-01",
+        "known_before_origin": 19,
+        "test_pool_size": 1421,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.7944090587402689,
+            "topk": {
+              "25": 1.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5638711960368011,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "detectability": {
+            "auc": 0.6927636234961075,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 2.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.5295470629865534,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.3174982307147912,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.4752300070771408,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5010978414720453,
+            "topk": {
+              "25": 0.155,
+              "50": 0.345,
+              "100": 0.595,
+              "200": 1.095
+            }
+          }
+        }
+      },
+      {
+        "origin": "2023-01-01",
+        "window_end": "2024-01-01",
+        "known_before_origin": 27,
+        "test_pool_size": 1413,
+        "test_positives": 4,
+        "methods": {
+          "combined": {
+            "auc": 0.8970901348474094,
+            "topk": {
+              "25": 1.0,
+              "50": 2.0,
+              "100": 3.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.4389638041163946,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5711497515968772,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.8388928317955997,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.20706174591909154,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.26437189496096525,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.49871540099361256,
+            "topk": {
+              "25": 0.08,
+              "50": 0.135,
+              "100": 0.24,
+              "200": 0.52
+            }
+          }
+        }
+      },
+      {
+        "origin": "2024-01-01",
+        "window_end": "2025-01-01",
+        "known_before_origin": 31,
+        "test_pool_size": 1409,
+        "test_positives": 8,
+        "methods": {
+          "combined": {
+            "auc": 0.8579586009992863,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 2.0,
+              "200": 3.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.5663811563169165,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.6071556031406139,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.6641684511063526,
+            "topk": {
+              "25": 0.0,
+              "50": 1.0,
+              "100": 1.0,
+              "200": 2.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.18335117773019272,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.37437544610992146,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.4896600642398288,
+            "topk": {
+              "25": 0.11,
+              "50": 0.245,
+              "100": 0.47,
+              "200": 1.055
+            }
+          }
+        }
+      },
+      {
+        "origin": "2025-01-01",
+        "window_end": "2026-09-21",
+        "known_before_origin": 39,
+        "test_pool_size": 1401,
+        "test_positives": 1,
+        "methods": {
+          "combined": {
+            "auc": 0.9492857142857143,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 1.0,
+              "200": 1.0
+            }
+          },
+          "high_logcd": {
+            "auc": 0.3778571428571429,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "detectability": {
+            "auc": 0.5164285714285715,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "low_dist": {
+            "auc": 0.7685714285714286,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "high_sigma": {
+            "auc": 0.23071428571428576,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "ucb": {
+            "auc": 0.2221428571428572,
+            "topk": {
+              "25": 0.0,
+              "50": 0.0,
+              "100": 0.0,
+              "200": 0.0
+            }
+          },
+          "random": {
+            "auc": 0.5084357142857142,
+            "topk": {
+              "25": 0.02,
+              "50": 0.05,
+              "100": 0.09,
+              "200": 0.14
+            }
+          }
+        }
+      }
+    ],
+    "pooled": {
+      "combined": {
+        "auc": 0.8455517872186569,
+        "topk": {
+          "25": 2.0,
+          "50": 3.0,
+          "100": 7.0,
+          "200": 10.0
+        }
+      },
+      "high_logcd": {
+        "auc": 0.5321776751501173,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 1.0
+        }
+      },
+      "detectability": {
+        "auc": 0.6285895900433263,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 1.0,
+          "200": 4.0
+        }
+      },
+      "low_dist": {
+        "auc": 0.6511365175474798,
+        "topk": {
+          "25": 0.0,
+          "50": 2.0,
+          "100": 2.0,
+          "200": 3.0
+        }
+      },
+      "random": {
+        "auc": 0.49663621733119795,
+        "topk": {
+          "25": 0.365,
+          "50": 0.775,
+          "100": 1.395,
+          "200": 2.81
+        }
+      },
+      "high_sigma": {
+        "auc": 0.24122650175954874,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      },
+      "ucb": {
+        "auc": 0.38459400297539126,
+        "topk": {
+          "25": 0.0,
+          "50": 0.0,
+          "100": 0.0,
+          "200": 0.0
+        }
+      }
+    },
+    "best_gating_baseline": "low_dist",
+    "j2_shift_log": [
+      {
+        "candidate_id": 29,
+        "formulas": "C7H2N+",
+        "orig_date": "2022-03-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 184,
+        "formulas": "C4HN2+",
+        "orig_date": "2022-12-13",
+        "origin": "2023-01-01",
+        "new_date": "2023-01-02"
+      },
+      {
+        "candidate_id": 386,
+        "formulas": "CHNS",
+        "orig_date": "2024-01-01",
+        "origin": "2024-01-01",
+        "new_date": "2023-12-31"
+      },
+      {
+        "candidate_id": 468,
+        "formulas": "C3H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 558,
+        "formulas": "C2H4S",
+        "orig_date": "2025-01-01",
+        "origin": "2025-01-01",
+        "new_date": "2024-12-31"
+      },
+      {
+        "candidate_id": 660,
+        "formulas": "C5H+",
+        "orig_date": "2022-01-01",
+        "origin": "2022-01-01",
+        "new_date": "2021-12-31"
+      },
+      {
+        "candidate_id": 688,
+        "formulas": "C3H4O",
+        "orig_date": "2023-02-17",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 707,
+        "formulas": "C5H5N",
+        "orig_date": "2023-03-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      },
+      {
+        "candidate_id": 823,
+        "formulas": "C10H-",
+        "orig_date": "2023-01-01",
+        "origin": "2023-01-01",
+        "new_date": "2022-12-31"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+# Analysis environment: every script in scripts/ (except scripts/features/) and everything in src/
+# (except src/umda_pipeline/). Python 3.11 (reference results: CPython 3.11.15; release verification: 3.11.16).
+#
+# The pins are the versions of the original analysis environment. Results of the logistic-regression
+# fits (lbfgs) and the bootstraps depend on the scikit-learn / numpy / scipy builds, so keep these exact.
+# Install:  python3.11 -m venv .venv && .venv/bin/pip install -r env/requirements-analysis.txt
+#
+# Direct dependencies (everything the code imports, plus joblib)
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.9
+rdkit==2026.3.6
+astropy==8.0.1
+joblib==1.5.3
+#
+# Indirect dependencies of the packages above (kept so the install is exactly reproducible)
+astropy-iers-data==0.2026.9.21.0.56.25
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.62.1
+kiwisolver==1.5.0
+packaging==26.1
+pillow==12.2.0
+pyerfa==2.0.1.5
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+PyYAML==6.0.3
+six==1.17.0
+threadpoolctl==3.6.0

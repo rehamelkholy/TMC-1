@@ -1,0 +1,40 @@
+# Embedding / feature environment: src/umda_pipeline/ and scripts/features/ (the mol2vec -> PCA(70)
+# embedding of the umda pipeline, the Gaussian-process fit, and the feature recomputation).
+#
+# Python 3.10 specifically. The pretrained regressors shipped in the umda repository
+# (models/regressors.pkl) unpickle only under scikit-learn==1.0.2 (newer versions change the internal
+# format of the stored decision trees and remove private APIs that mol2vec / dask-ml still import), and
+# scikit-learn 1.0.2 has no wheel for Python 3.11 or later. This is why the release has two environments.
+#
+# Three steps are not expressible in a requirements file and are done by env/install_embedding_env.sh
+# (see env/README_env.md): installing the mol2vec fork with --no-deps, overwriting
+# site-packages/mol2vec/features.py with env/mol2vec_features_patched.py, and applying a one-line
+# np.float / np.int alias fix to site-packages/dask_ml/_typing.py.
+# Install:  bash env/install_embedding_env.sh .venv-embed
+
+numpy==1.26.4
+gensim==4.4.0
+rdkit==2026.3.6
+pandas==2.3.3
+scipy==1.15.3
+joblib==1.6.0
+dask==2026.8.0
+dask-ml==1.8.0
+numba==0.67.0
+llvmlite==0.49.0
+h5py==3.16.0
+loguru==0.7.3
+networkx==3.4.2
+bokeh==3.9.2
+tqdm==4.70.1
+# pkg_resources is needed to unpickle umda's EmbeddingModel.pkl; it was removed from setuptools 81+
+setuptools==80.9.0
+scikit-learn==1.0.2
+
+# gensim>=4.0-compatible fork of mol2vec, pinned to a commit. Installed by env/install_embedding_env.sh with
+# --no-deps, because the fork's setup.py still pins gensim==3.8.3:
+#   mol2vec @ git+https://github.com/laserkelvin/mol2vec.git@850d944d5f48a58e26ed0264332b5741f72555aa
+
+# umda itself (https://github.com/laserkelvin/umda, commit a95cc1c1eb98a1ff64b37a4c6ed92f9546d0215b) is not
+# a pip dependency: fetch it as described in data/raw/FETCH.md; the code only needs its models/ directory
+# and the package on PYTHONPATH (needed to unpickle EmbeddingModel.pkl).
