@@ -134,9 +134,9 @@ mrt_path = f"{out_dir}/table1_validation_set.mrt"
 at.write(mrt_path, format="ascii.mrt", overwrite=True)
 
 MRT_FILL = (
-    "(to be added)",
-    "(to be added)",
-    "Validation set of post-2021 TMC-1 species detections (101 rows)",
+    "Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1",
+    "El-Kholy R.I., Hayman Z.M.",
+    "Molecules reported toward TMC-1 that are absent from the training inventory of Lee et al. (2021)",
 )
 lines = open(mrt_path).read().split("\n")
 filled = 0

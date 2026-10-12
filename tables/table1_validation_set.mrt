@@ -1,6 +1,6 @@
-Title: (to be added)
-Authors: (to be added)
-Table: Validation set of post-2021 TMC-1 species detections (101 rows)
+Title: Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1
+Authors: El-Kholy R.I., Hayman Z.M.
+Table: Molecules reported toward TMC-1 that are absent from the training inventory of Lee et al. (2021)
 ================================================================================
 Byte-by-byte Description of file: table.dat
 --------------------------------------------------------------------------------

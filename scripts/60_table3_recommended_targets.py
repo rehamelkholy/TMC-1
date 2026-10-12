@@ -157,10 +157,9 @@ mrt_path = os.path.join(TABLES, "table3_recommended_targets.mrt")
 at.write(mrt_path, format="ascii.mrt", overwrite=True)
 
 HEADER = (
-    "(to be added)",
-    "(to be added)",
-    "Top 100 recommended TMC-1 targets from the frozen model (63 known positives), in model-rank order; only "
-    "non-physical structures excluded (ranks 5 and 71); laboratory spectroscopy is a column, not a filter.",
+    "Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1",
+    "El-Kholy R.I., Hayman Z.M.",
+    "Highest-ranked candidates for detection toward TMC-1",
 )
 lines = open(mrt_path).read().split("\n")
 filled = 0

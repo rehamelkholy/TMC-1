@@ -2,24 +2,32 @@ cff-version: 1.2.0
 message: "If you use this software or data, please cite the paper and the archived release."
 title: "TMC-1: ranking unseen interstellar-molecule candidates with a frozen model (code and data)"
 type: software
-version: "(to be added)"
-date-released: "(to be added)"
-doi: "(to be added)"
-repository-code: "(to be added)"
+# doi: "(to be added)"  <- Zenodo DOI; add after archiving (not valid CFF until a real DOI is set)
+repository-code: "https://github.com/rehamelkholy/TMC-1"
 license: MIT
 authors:
-  - family-names: "(to be added)"
-    given-names: "(to be added)"
-    orcid: "(to be added)"
+  - family-names: "El-Kholy"
+    given-names: "R. I."
+    orcid: "https://orcid.org/0000-0001-6337-1384"
+    email: "relkholy@sci.cu.edu.eg"
+    affiliation: "Department of Astronomy, Space Science, and Meteorology, Faculty of Science, Cairo University, 1 Gamaa Street, Giza 12613, Egypt"
+  - family-names: "Hayman"
+    given-names: "Z. M."
+    orcid: "https://orcid.org/0009-0009-4770-5626"
+    affiliation: "Department of Astronomy, Space Science, and Meteorology, Faculty of Science, Cairo University, 1 Gamaa Street, Giza 12613, Egypt"
 preferred-citation:
   type: article
-  title: "(to be added)"
+  title: "Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1"
   authors:
-    - family-names: "(to be added)"
-      given-names: "(to be added)"
-      orcid: "(to be added)"
-  journal: "(to be added)"
-  year: "(to be added)"
+    - family-names: "El-Kholy"
+      given-names: "R. I."
+      orcid: "https://orcid.org/0000-0001-6337-1384"
+    - family-names: "Hayman"
+      given-names: "Z. M."
+      orcid: "https://orcid.org/0009-0009-4770-5626"
+  journal: "The Astrophysical Journal"
+  status: submitted
+  year: 2026
 references:
   - type: article
     title: "Machine Learning of Interstellar Chemical Inventories"

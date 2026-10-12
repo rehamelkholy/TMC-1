@@ -2,7 +2,9 @@
 
 Code, frozen inputs, results and tables for the TMC-1 detection-ranking study.
 
-* Paper: (to be added)
+* Paper: El-Kholy, R. I. & Hayman, Z. M. 2026, "Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1", submitted to ApJ
+* Repository: https://github.com/rehamelkholy/TMC-1
+* Contact: R. I. El-Kholy, relkholy@sci.cu.edu.eg
 * Zenodo DOI: (to be added)
 
 The study asks whether a model fitted only on what was known before a cut-off date ranks the later-detected TMC-1 molecules high among
@@ -143,7 +145,7 @@ ranking, removal of the two non-physical structures at ranks 5 and 71, reasons) 
 The sealed JSONs, `data/frozen/post2021_detections.csv`, the anchor table and the protocol files are hashed records and were not edited.
 They (and the strings that the seal scripts write into the JSONs) therefore still contain internal wording about how they were produced.
 `tables/table1_validation_set.mrt` and `tables/table3_recommended_targets.mrt` are the journal submission files; their headers were
-regenerated (title and authors are placeholders, column descriptions only) and their data blocks are byte-identical to the frozen files.
+regenerated (only the title, authors and table-title lines and the column descriptions were written) and their data blocks are byte-identical to the frozen files.
 
 ## What was verified
 
@@ -159,5 +161,5 @@ SHA-256 of the main outputs: `results/sealed/SHA256SUMS`.
 
 ## Citation
 
-See `CITATION.cff`. Please cite the paper (to be added) and the Zenodo archive (DOI to be added), and Lee et al. (2021, ApJL 917, L6) for
+See `CITATION.cff`. Please cite the paper (El-Kholy & Hayman 2026, submitted to ApJ) and the Zenodo archive (DOI to be added), and Lee et al. (2021, ApJL 917, L6) for
 the recommendation list and the umda pipeline (doi:10.3847/2041-8213/ac194b).
