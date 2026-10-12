@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software or data, please cite the paper and the archived release."
 title: "TMC-1: ranking unseen interstellar-molecule candidates with a frozen model (code and data)"
 type: software
-# doi: "(to be added)"  <- Zenodo DOI; add after archiving (not valid CFF until a real DOI is set)
+doi: "10.5281/zenodo.23312983"
 repository-code: "https://github.com/rehamelkholy/TMC-1"
 license: MIT
 authors:

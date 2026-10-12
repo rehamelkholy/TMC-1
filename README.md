@@ -5,7 +5,7 @@ Code, frozen inputs, results and tables for the TMC-1 detection-ranking study.
 * Paper: El-Kholy, R. I. & Hayman, Z. M. 2026, "Active Learning for Molecular Discovery: A Retrospective Test toward TMC-1", submitted to ApJ
 * Repository: https://github.com/rehamelkholy/TMC-1
 * Contact: R. I. El-Kholy, relkholy@sci.cu.edu.eg
-* Zenodo DOI: (to be added)
+* Zenodo DOI: [10.5281/zenodo.23312984](https://doi.org/10.5281/zenodo.23312984)
 
 The study asks whether a model fitted only on what was known before a cut-off date ranks the later-detected TMC-1 molecules high among
 ~1,400 candidate species, using the recommendation list of Lee et al. (2021, ApJL 917, L6) as the candidate universe. The analysis plan
@@ -161,5 +161,5 @@ SHA-256 of the main outputs: `results/sealed/SHA256SUMS`.
 
 ## Citation
 
-See `CITATION.cff`. Please cite the paper (El-Kholy & Hayman 2026, submitted to ApJ) and the Zenodo archive (DOI to be added), and Lee et al. (2021, ApJL 917, L6) for
+See `CITATION.cff`. Please cite the paper (El-Kholy & Hayman 2026, submitted to ApJ) and the Zenodo archive (doi:10.5281/zenodo.23312984), and Lee et al. (2021, ApJL 917, L6) for
 the recommendation list and the umda pipeline (doi:10.3847/2041-8213/ac194b).
